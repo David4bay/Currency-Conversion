@@ -7,7 +7,8 @@ const Heading = styled.header`
     font-style: normal;
     font-weight: bolder;
     text-align: center;
-    width: 100%;
+    max-width: fit-content;
+    margin: auto;
     padding-left: 8vw;
     color: #fff;
     letter-spacing: 1px;
@@ -28,7 +29,8 @@ const HeadingText = styled.span`
     padding: 10px;
     z-index: -1;
     font-size: 6rem;
-    box-shadow: 0px 0px 15px 0px #fff;
+    box-shadow: 0px 0px 15px 1px #fff;
+    transition: letter-spacing 0.4s ease-in-out;
 
     &:hover {
         cursor: pointer;
@@ -59,10 +61,12 @@ function Header() {
             e.target.style.transform = `rotateX(${xAxis}deg) rotateY(${yAxis}deg)`;
         }
     }, [effect])
-
+    
     useEffect(() => {
         setEffect(false);
-        return () => setEffect(true);
+        return () => {
+            setEffect(true);
+        }
     }, [effect])
 
 
