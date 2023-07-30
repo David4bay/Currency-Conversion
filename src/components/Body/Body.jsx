@@ -15,8 +15,12 @@ function Body() {
         const name = e.target.name;
         const value = e.target.value;
         setCurrency({
-            ...currency, [name]: value
+            ...currency,
+            [name]: value
         })
+        if (currency.defaultTypeAmount.length > 5 || currency.convertedTypeAmount.length > 5) {
+            setCurrency({...currency, [name]: value.slice(0, 6)})
+        }
     }
 
     return (
@@ -29,8 +33,8 @@ function Body() {
                 currency: currency.defaultType
             })}
             </label>
-            <input type="number" name="currency" id="currency" 
-            value={currency.defaultTypeAmount} max={99999} 
+            <input type="number" name="defaultTypeAmount" id="defaultTypeAmount" 
+            value={currency.defaultTypeAmount} maxLength="5"
             onChange={changeCurrencyHandler}
             />
             </fieldset>
@@ -41,9 +45,9 @@ function Body() {
                     currency: currency.convertedType
                 })}
             </label>
-            <input type="number" name="convertedCurrency" id="convertedCurrency"
-            value={currency.convertedTypeAmount} max={99999}
-            onChange={currency.convertedTypeAmount}
+            <input type="number" name="convertedTypeAmount" id="convertedTypeAmount"
+            value={currency.convertedTypeAmount} maxLength="5"
+            onChange={changeCurrencyHandler}
             />
             </fieldset>
             <button>
