@@ -64,9 +64,16 @@ import { useState } from 'react';
     `
 
     const SwapCurrencyButton = styled.button`
-        border: 3px solid #fff;
+        color: #fff;
         padding: 10px;
-        background-color: hsla(0, 0%, 0%, 0.15);
+        background-color: hsla(0, 0%, 0%, 0.45);
+        backdrop-filter: blur(5px);
+    `
+
+    const ResetButton = styled.button`
+        color: #fff;
+        padding: 10px;
+        background-color: hsla(0, 0%, 0%, 0.45);
         backdrop-filter: blur(5px);
     `
 
@@ -121,12 +128,12 @@ function Body() {
             onChange={changeCurrencyHandler}
             />
             </SecondFieldSet>
-            <button>
+            <SwapCurrencyButton>
                 Swap {currency.defaultType}/{currency.convertedType}
-            </button>
-            <button>
+            </SwapCurrencyButton>
+            <ResetButton>
                 Reset Currencies
-            </button>
+            </ResetButton>
         </FormElement>
     )
 }
