@@ -66,13 +66,22 @@ import { useState } from 'react';
     const SwapCurrencyButton = styled.button`
         color: #fff;
         padding: 10px;
+        border: none;
+        box-shadow: -1px 0px 1px 0px #fff;
         background-color: hsla(0, 0%, 0%, 0.45);
         backdrop-filter: blur(5px);
+        
+
+        &:active {
+            box-shadow: none;
+        }
     `
 
     const ResetButton = styled.button`
         color: #fff;
         padding: 10px;
+        border: none;
+        box-shadow: -1px 0px 1px 0px #fff;
         background-color: hsla(0, 0%, 0%, 0.45);
         backdrop-filter: blur(5px);
     `
