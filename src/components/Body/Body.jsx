@@ -27,6 +27,9 @@ import { useState } from 'react';
     `
 
     const FirstFieldSet = styled.fieldset`
+        display: grid;
+        grid-rows: 2/3;
+        text-align: center;
         color: #ffffff;
         letter-spacing: 1px;
         border: none;
@@ -36,12 +39,11 @@ import { useState } from 'react';
         font-size: clamp(1vw, 20px, 22px);
         text-align: center;
         padding: 10px;
-        display: grid;
-        grid-rows: 2/3;
-        text-align: center;
     `
 
     const SecondFieldSet = styled.fieldset`
+    display: grid;
+    grid-rows: 2/3;
         color: #ffffff;
         letter-spacing: 1px;
         border: none;
@@ -51,8 +53,6 @@ import { useState } from 'react';
         font-size: clamp(1vw, 20px, 22px);
         text-align: center;
         padding: 10px;
-        display: grid;
-        grid-rows: 2/3;
     `
 
     const ConvertTitle = styled.span`
@@ -89,16 +89,14 @@ function Body() {
     const changeCurrencyHandler = e => {
         const name = e.target.name;
         const value = e.target.value;
-        setCurrency({
-            ...currency,
-            [name]: value
-        })
 
-        // if (currency.defaultTypeAmount < 1 || currency.convertedTypeAmount < 1) 
-        //     {setCurrency({...currency, [name]: 0})}
+        setCurrency({ ...currency, [name]: value })
 
-        if (currency.defaultTypeAmount.length > 5 || currency.convertedTypeAmount.length > 5) 
-            {setCurrency({...currency, [name]: value.slice(0, 6)})}
+        if (currency.defaultTypeAmount < 0 || currency.convertedTypeAmount < 0) 
+            {setCurrency({...currency, [name]: 1})}
+
+        if (currency.defaultTypeAmount.length > 20 || currency.convertedTypeAmount.length > 20) 
+            {setCurrency({...currency, [name]: value.slice(0, 20)})}
     }
 
     return (
@@ -114,6 +112,7 @@ function Body() {
             <CurrencyInput type="number" name="defaultTypeAmount" id="defaultTypeAmount" 
             value={currency.defaultTypeAmount}
             onChange={changeCurrencyHandler}
+            min={0}
             />
             </FirstFieldSet>
             <SecondFieldSet>
@@ -126,6 +125,7 @@ function Body() {
             <CurrencyInput type="number" name="convertedTypeAmount" id="convertedTypeAmount"
             value={currency.convertedTypeAmount}
             onChange={changeCurrencyHandler}
+            min={0}
             />
             </SecondFieldSet>
             <SwapCurrencyButton>
