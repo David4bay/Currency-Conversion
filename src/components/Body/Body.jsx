@@ -42,8 +42,8 @@ import { useState } from 'react';
     `
 
     const SecondFieldSet = styled.fieldset`
-    display: grid;
-    grid-rows: 2/3;
+        display: grid;
+        grid-rows: 2/3;
         color: #ffffff;
         letter-spacing: 1px;
         border: none;
@@ -60,7 +60,9 @@ import { useState } from 'react';
     `
 
     const CurrencyInput = styled.input`
-
+        border: none;
+        padding: 7px;
+        border-radius: 5px;
     `
 
     const SwapCurrencyButton = styled.button`
@@ -70,10 +72,9 @@ import { useState } from 'react';
         box-shadow: -1px 0px 1px 0px #fff;
         background-color: hsla(0, 0%, 0%, 0.45);
         backdrop-filter: blur(5px);
-        
 
         &:active {
-            box-shadow: none;
+            box-shadow: 2px 0px -2px 1px #fff;
         }
     `
 
@@ -100,9 +101,6 @@ function Body() {
         const value = e.target.value;
 
         setCurrency({ ...currency, [name]: value })
-
-        if (currency.defaultTypeAmount < 0 || currency.convertedTypeAmount < 0) 
-            {setCurrency({...currency, [name]: 1})}
 
         if (currency.defaultTypeAmount.length > 20 || currency.convertedTypeAmount.length > 20) 
             {setCurrency({...currency, [name]: value.slice(0, 20)})}
