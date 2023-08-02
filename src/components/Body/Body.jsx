@@ -20,15 +20,16 @@ import { useState } from 'react';
         font-weight: 600;
         font-size: clamp(1vw, 20px, 22px);
         text-align: center;
-        padding: 10px;
+        padding: 50px;
         grid-row: 1/2;
         grid-column: 1/3;
         height: max-content;
     `
 
     const FirstFieldSet = styled.fieldset`
-    color: #ffffff;
+        color: #ffffff;
         letter-spacing: 1px;
+        border: none;
         text-transform: Capitalize;
         font-style: Verdana, Tahoma, sans-serif;
         font-weight: 600;
@@ -41,8 +42,9 @@ import { useState } from 'react';
     `
 
     const SecondFieldSet = styled.fieldset`
-    color: #ffffff;
+        color: #ffffff;
         letter-spacing: 1px;
+        border: none;
         text-transform: Capitalize;
         font-style: Verdana, Tahoma, sans-serif;
         font-weight: 600;
@@ -53,8 +55,19 @@ import { useState } from 'react';
         grid-rows: 2/3;
     `
 
+    const ConvertTitle = styled.span`
+        display: block;
+    `
+
     const CurrencyInput = styled.input`
 
+    `
+
+    const SwapCurrencyButton = styled.button`
+        border: 3px solid #fff;
+        padding: 10px;
+        background-color: hsla(0, 0%, 0%, 0.15);
+        backdrop-filter: blur(5px);
     `
 
 function Body() {
@@ -74,13 +87,11 @@ function Body() {
             [name]: value
         })
 
-        if (
-            currency.defaultTypeAmount.length > 5 || 
-            currency.convertedTypeAmount.length > 5
-            ) 
-            {
-            setCurrency({...currency, [name]: value.slice(0, 6)})
-        }
+        // if (currency.defaultTypeAmount < 1 || currency.convertedTypeAmount < 1) 
+        //     {setCurrency({...currency, [name]: 0})}
+
+        if (currency.defaultTypeAmount.length > 5 || currency.convertedTypeAmount.length > 5) 
+            {setCurrency({...currency, [name]: value.slice(0, 6)})}
     }
 
     return (
@@ -88,7 +99,7 @@ function Body() {
             <Legend>Swap and Compare Currencies</Legend>
             <FirstFieldSet>
             <label htmlFor="startingCurrency">
-                From {currency.defaultTypeAmount.toLocaleString({
+                <ConvertTitle>Convert from</ConvertTitle> {currency.defaultTypeAmount.toLocaleString({
                 style: "currency",
                 currency: currency.defaultType
             })}
@@ -100,7 +111,7 @@ function Body() {
             </FirstFieldSet>
             <SecondFieldSet>
             <label htmlFor="convertedCurrency">
-                To {currency.convertedTypeAmount.toLocaleString({
+                <ConvertTitle>Convert to</ConvertTitle> {currency.convertedTypeAmount.toLocaleString({
                     style: "currency",
                     currency: currency.convertedType
                 })}
