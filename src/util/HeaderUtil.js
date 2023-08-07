@@ -35,7 +35,8 @@ export const HeadingText = styled.span`
     z-index: -1;
     border-radius: 5px;
     font-size: clamp(1vw, 85px, 96px);
-    box-shadow: 0px 0px 15px 3px #fff;
+    filter: drop-shadow(0px 0px 15px lightblue);
+    box-shadow: 0px 0px 15px 5px #fff;
     transition: letter-spacing 0.4s ease-in-out;
 
     &:hover {
@@ -51,9 +52,16 @@ export const ExclamationMark = styled.span`
 export const CurrencyFont = {
     fontSize: 'clamp(1vw, 85px, 96px)',
     color: '#4FBBBF',
+    boxShadow: '0px 0px 10px 1px #fff',
+    padding: '5px',
+    filter: 'drop-shadow(0px 0px 15px lightblue)'
 }
 
 export const FontContainer = styled.span`
-    display: block;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 10px;
+    padding: 15px;
 `
 
