@@ -8,7 +8,7 @@ import {
     HeadingText,
     CurrencyFont,
     FontContainer
-} from '../../util/util';
+} from '../../util/HeaderUtil';
 
 function Header() {
     

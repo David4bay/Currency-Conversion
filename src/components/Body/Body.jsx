@@ -8,7 +8,7 @@ import {
     CurrencyInput,
     SwapCurrencyButton,
     ResetButton
-} from '../../util/util';
+} from '../../util/BodyUtil';
 
 function Body() {
 

@@ -6,7 +6,7 @@ import {
     NavContainer,
     IconText,
     Icon
-} from '../../util/util'
+} from '../../util/NavUtil'
 
 
 
