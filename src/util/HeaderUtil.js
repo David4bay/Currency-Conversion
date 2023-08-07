@@ -17,6 +17,7 @@ export const Heading = styled.header`
     padding-top: 10vh;
     z-index: -1;
     overflow: hidden;
+    perspective: 1000px;
 
     @media (min-width: 900px) {
         
@@ -44,14 +45,11 @@ export const HeadingText = styled.span`
 
 export const ExclamationMark = styled.span`
     color: #4FBBBF;
-    
-    &:hover {
-        transform: translateZ(700px);
-    }
+    transform: translateZ(900px);
 `
 
 export const CurrencyFont = {
-    fontSize: '6rem',
+    fontSize: 'clamp(1vw, 85px, 96px)',
     color: '#4FBBBF',
 }
 
