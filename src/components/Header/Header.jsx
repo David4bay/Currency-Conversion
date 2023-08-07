@@ -1,52 +1,14 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
-import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faNairaSign, faDollarSign, faPoundSign, faYenSign } from '@fortawesome/free-solid-svg-icons';
 
-const Heading = styled.header`
-    font-style: normal;
-    font-weight: bolder;
-    text-align: center;
-    max-width: fit-content;
-    margin: auto;
-    padding-left: 8vw;
-    color: #fff;
-    letter-spacing: 1px;
-    padding-top: 10vh;
-    z-index: -1;
-    overflow: hidden;
-    perspective: 3000px;
-
-    @media (min-width: 900px) {
-        display: flex;
-        flex-direction: column;
-        gap: 2rem;
-        width: 100%;
-    }
-`
-
-const HeadingText = styled.span`
-    padding: 10px;
-    z-index: -1;
-    font-size: 6rem;
-    box-shadow: 0px 0px 15px 1px #fff;
-    transition: letter-spacing 0.4s ease-in-out;
-
-    &:hover {
-        cursor: pointer;
-    }
-`
-
-const ExclamationMark = styled.span`
-    color: #4FBBBF;
-`
-
-const CurrencyFont = {
-    fontSize: '6rem',
-    color: '#4FBBBF',
-}
-
-
+import {
+    Heading,
+    ExclamationMark,
+    HeadingText,
+    CurrencyFont,
+    FontContainer
+} from '../../util/util';
 
 function Header() {
     
@@ -76,12 +38,12 @@ function Header() {
                 Convert Currency
             <ExclamationMark>!</ExclamationMark>
             </HeadingText>
-            <span>
+            <FontContainer>
                 <FontAwesomeIcon style={CurrencyFont} icon={faDollarSign} />
                 <FontAwesomeIcon style={CurrencyFont} icon={faPoundSign} />
                 <FontAwesomeIcon style={CurrencyFont} icon={faYenSign} />
                 <FontAwesomeIcon style={CurrencyFont} icon={faNairaSign} />
-            </span>
+            </FontContainer>
         </Heading>
     )
 }
