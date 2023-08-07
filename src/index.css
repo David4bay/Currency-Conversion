@@ -25,5 +25,5 @@ body {
   font-family: 'Ubuntu', sans-serif;
   min-height: 100vh;
   backdrop-filter: blur(5px);
-  filter: contrast(1);
+
 }

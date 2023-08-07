@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faNairaSign, faDollarSign, faPoundSign, faYenSign } from '@fortawesome/free-solid-svg-icons';
 
 import {
+    HeaderContainer,
     Heading,
     ExclamationMark,
     HeadingText,
@@ -33,18 +34,20 @@ function Header() {
 
 
     return (
-        <Heading onMouseMove={runEffect}>
-            <HeadingText ref={effectRef}>
-                Convert Currency
-            <ExclamationMark>!</ExclamationMark>
-            </HeadingText>
-            <FontContainer>
-                <FontAwesomeIcon style={CurrencyFont} icon={faDollarSign} />
-                <FontAwesomeIcon style={CurrencyFont} icon={faPoundSign} />
-                <FontAwesomeIcon style={CurrencyFont} icon={faYenSign} />
-                <FontAwesomeIcon style={CurrencyFont} icon={faNairaSign} />
-            </FontContainer>
-        </Heading>
+        <HeaderContainer>
+            <Heading onMouseMove={runEffect}>
+                <HeadingText ref={effectRef}>
+                    Convert Currency
+                <ExclamationMark>!</ExclamationMark>
+                </HeadingText>
+                <FontContainer>
+                    <FontAwesomeIcon style={CurrencyFont} icon={faDollarSign} />
+                    <FontAwesomeIcon style={CurrencyFont} icon={faPoundSign} />
+                    <FontAwesomeIcon style={CurrencyFont} icon={faYenSign} />
+                    <FontAwesomeIcon style={CurrencyFont} icon={faNairaSign} />
+                </FontContainer>
+            </Heading>
+        </HeaderContainer>
     )
 }
 
