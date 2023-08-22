@@ -37,7 +37,7 @@ function Body() {
                 <ConvertTitle>Convert from</ConvertTitle> {currency.defaultTypeAmount.toLocaleString({
                 style: "currency",
                 currency: currency.defaultType
-            })}
+            }) || 0}
             </label>
             <CurrencyInput type="number" name="defaultTypeAmount" id="defaultTypeAmount" 
             value={currency.defaultTypeAmount}
@@ -53,7 +53,7 @@ function Body() {
                 })}
             </label>
             <CurrencyInput type="number" name="convertedTypeAmount" id="convertedTypeAmount"
-            value={currency.convertedTypeAmount}
+            value={currency.convertedTypeAmount || 0}
             onChange={changeCurrencyHandler}
             min={0}
             />
