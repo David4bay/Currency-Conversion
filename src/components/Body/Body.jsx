@@ -7,7 +7,8 @@ import {
     ConvertTitle,
     CurrencyInput,
     SwapCurrencyButton,
-    ResetButton
+    ResetButton,
+    ThirdFieldSet
 } from '../../util/BodyUtil';
 
 function Body() {
@@ -50,10 +51,10 @@ function Body() {
                 <ConvertTitle>Convert to</ConvertTitle> {currency.convertedTypeAmount.toLocaleString({
                     style: "currency",
                     currency: currency.convertedType
-                })}
+                }) || 0}
             </label>
             <CurrencyInput type="number" name="convertedTypeAmount" id="convertedTypeAmount"
-            value={currency.convertedTypeAmount || 0}
+            value={currency.convertedTypeAmount}
             onChange={changeCurrencyHandler}
             min={0}
             />
@@ -61,6 +62,9 @@ function Body() {
             <SwapCurrencyButton>
                 Swap {currency.defaultType}/{currency.convertedType}
             </SwapCurrencyButton>
+            <ThirdFieldSet>
+
+            </ThirdFieldSet>
             <ResetButton>
                 Reset Currencies
             </ResetButton>

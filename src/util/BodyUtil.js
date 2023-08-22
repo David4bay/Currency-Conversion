@@ -103,6 +103,10 @@ backdrop-filter: blur(5px);
 }
 `
 
+export const ThirdFieldSet = styled.fieldset`
+
+`
+
 export const ResetButton = styled.button`
 color: #fff;
 padding: 10px;
