@@ -18,17 +18,19 @@ margin-top: 15px;
 
 export const Legend = styled.legend`
 display: grid;
-grid-column: 1/4;
+grid-column: 2/3;
 grid-row: 1/2;
+justify-content: center;
+align-items: center;
+text-align: center;
+width: 100%;
 color: #ffffff;
 letter-spacing: 1px;
-text-transform: Capitalize;
+text-transform: uppercase;
 font-style: Verdana, Tahoma, sans-serif;
 font-weight: 600;
 font-size: clamp(1vw, 20px, 22px);
-text-align: center;
 padding: 50px;
-height: max-content;
 `
 
 export const FirstFieldSet = styled.fieldset`
@@ -49,20 +51,18 @@ padding: 10px;
 
 @media (max-width: 900px) { 
     display: grid;
-
 }
 `
 
 export const SecondFieldSet = styled.fieldset`
 display: grid;
 grid-column: 2/3;
-justify-items: stretch;
+grid-row: 2/3;
 gap: 35px;
-width: 100%;
-height: 100%;
 color: #ffffff;
 letter-spacing: 3px;
 border: none;
+width: 100%;
 text-transform: Capitalize;
 font-style: Verdana, Tahoma, sans-serif;
 font-weight: 600;
@@ -72,7 +72,7 @@ padding: 25px;
 
 @media (max-width: 900px) { 
     display: grid;
-    
+    width: 100%;
 }
 `
 
@@ -107,7 +107,15 @@ padding: 7px;
 border-radius: 5px;
 `
 
+export const SwapCurrencyText = styled.strong`
+    
+`
+
 export const SwapCurrencyButton = styled.button`
+
+min-width: 90%;
+max-width: 400px;
+margin: auto;
 color: #fff;
 padding: 10px;
 border: none;
@@ -124,7 +132,6 @@ backdrop-filter: blur(5px);
 }
 
 @media (max-width: 900px) { 
-    display: grid;
 }
 `
 
@@ -132,6 +139,9 @@ export const ResetButton = styled.button`
 color: #fff;
 padding: 10px;
 border: none;
+min-width: 90%;
+max-width: 400px;
+margin: auto;
 box-shadow: -1px 0px 1px 0px #fff;
 background-color: hsla(0, 0%, 0%, 0.45);
 backdrop-filter: blur(5px);

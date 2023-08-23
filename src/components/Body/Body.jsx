@@ -8,7 +8,8 @@ import {
     CurrencyInput,
     SwapCurrencyButton,
     ResetButton,
-    ThirdFieldSet
+    ThirdFieldSet,
+    SwapCurrencyText
 } from '../../util/BodyUtil';
 
 function Body() {
@@ -47,7 +48,7 @@ function Body() {
 
     return (
         <FormElement>
-                <Legend>Swap and Compare Currencies</Legend>
+                <Legend>Swap and Compare Currency</Legend>
             <FirstFieldSet>
                 <label htmlFor="startingCurrency">
                     <ConvertTitle>Convert from</ConvertTitle> {currency.defaultTypeAmount.toLocaleString("en-US",{
@@ -64,7 +65,7 @@ function Body() {
             </FirstFieldSet>
             <SecondFieldSet>
                 <SwapCurrencyButton onClick={swapCurrencies}>
-                    Swap {currency.defaultType}/{currency.convertedType}
+                    Swap <SwapCurrencyText>{currency.defaultType}</SwapCurrencyText>/<SwapCurrencyText>{currency.convertedType}</SwapCurrencyText>
                 </SwapCurrencyButton>
                 <ResetButton>
                     Reset Currencies
@@ -81,6 +82,7 @@ function Body() {
                 value={currency.convertedTypeAmount}
                 onChange={changeCurrencyHandler}
                 min={0}
+                step={0.5}
                 />
             </ThirdFieldSet>
         </FormElement>
