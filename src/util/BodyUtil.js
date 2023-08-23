@@ -37,7 +37,8 @@ grid-column: 1/2;
 grid-row: 2/3;
 text-align: center;
 color: #ffffff;
-letter-spacing: 1px;
+gap: 8px;
+letter-spacing: 3px;
 border: none;
 text-transform: Capitalize;
 font-style: Verdana, Tahoma, sans-serif;
@@ -60,7 +61,7 @@ gap: 35px;
 width: 100%;
 height: 100%;
 color: #ffffff;
-letter-spacing: 1px;
+letter-spacing: 3px;
 border: none;
 text-transform: Capitalize;
 font-style: Verdana, Tahoma, sans-serif;
@@ -79,8 +80,9 @@ export const ThirdFieldSet = styled.fieldset`
 display: grid;
 grid-column: 3/4;
 grid-row: 2/3;
-color: #fffff;
-letter-spacing: 1px;
+color: #ffffff;
+gap: 8px;
+letter-spacing: 3px;
 border: none;
 text-transform: Capitalize;
 font-style: Verdana, Tahoma, sans-serif;
@@ -114,7 +116,11 @@ background-color: hsla(0, 0%, 0%, 0.45);
 backdrop-filter: blur(5px);
 
 &:active {
-    box-shadow: 2px 0px -2px 1px #fff;
+    transform: translateY(6%);
+}
+
+&:hover {
+    cursor: pointer;
 }
 
 @media (max-width: 900px) { 
@@ -129,6 +135,14 @@ border: none;
 box-shadow: -1px 0px 1px 0px #fff;
 background-color: hsla(0, 0%, 0%, 0.45);
 backdrop-filter: blur(5px);
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    &:active {
+        transform: translateY(6%);
+    }
 
 @media (max-width: 900px) { 
     display: grid;    

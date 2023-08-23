@@ -23,11 +23,26 @@ function Body() {
     const changeCurrencyHandler = e => {
         const name = e.target.name;
         const value = e.target.value;
+        const type = e.target.name === "defaultTypeAmount" ? currency.defaultType : currency.convertedType
+        setCurrency({ ...currency, [name]: value.toLocaleString("en-US", { style: "currency", currency: type}) })
 
-        setCurrency({ ...currency, [name]: value })
+        // if (currency.defaultTypeAmount.length > 10 || currency.convertedTypeAmount.length > 10) 
+        //     {setCurrency({...currency, [name]: value.slice(0, 10)})}
+    }
 
-        if (currency.defaultTypeAmount.length > 20 || currency.convertedTypeAmount.length > 20) 
-            {setCurrency({...currency, [name]: value.slice(0, 20)})}
+    const swapCurrencies = () => {
+        const defaultTypes = currency.defaultType;
+        const defaultAmounts = currency.defaultTypeAmount;
+        const convertedTypes = currency.convertedType;
+        const convertedTypeAmounts = currency.convertedTypeAmount;
+
+        setCurrency({
+            ...currency, 
+            defaultType: convertedTypes, 
+            defaultTypeAmount: convertedTypeAmounts, 
+            convertedType: defaultTypes, 
+            convertedTypeAmount: defaultAmounts
+        })
     }
 
     return (
@@ -35,7 +50,7 @@ function Body() {
                 <Legend>Swap and Compare Currencies</Legend>
             <FirstFieldSet>
                 <label htmlFor="startingCurrency">
-                    <ConvertTitle>Convert from</ConvertTitle> {currency.defaultTypeAmount.toLocaleString({
+                    <ConvertTitle>Convert from</ConvertTitle> {currency.defaultTypeAmount.toLocaleString("en-US",{
                     style: "currency",
                     currency: currency.defaultType
                 }) || 0}
@@ -44,10 +59,11 @@ function Body() {
                 value={currency.defaultTypeAmount}
                 onChange={changeCurrencyHandler}
                 min={0}
+                max={999999}
                 />
             </FirstFieldSet>
             <SecondFieldSet>
-                <SwapCurrencyButton>
+                <SwapCurrencyButton onClick={swapCurrencies}>
                     Swap {currency.defaultType}/{currency.convertedType}
                 </SwapCurrencyButton>
                 <ResetButton>
@@ -56,7 +72,7 @@ function Body() {
             </SecondFieldSet>
             <ThirdFieldSet>
                 <label htmlFor="convertedCurrency">
-                    <ConvertTitle>Convert to</ConvertTitle> {currency.convertedTypeAmount.toLocaleString({
+                    <ConvertTitle>Convert to</ConvertTitle> {currency.convertedTypeAmount.toLocaleString("en-US",{
                         style: "currency",
                         currency: currency.convertedType
                     }) || 0}
