@@ -108,12 +108,13 @@ border-radius: 5px;
 `
 
 export const SwapCurrencyText = styled.strong`
-    
+
 `
 
 export const SwapCurrencyButton = styled.button`
+display: inline-grid;
 
-min-width: 90%;
+min-width: 50%;
 max-width: 400px;
 margin: auto;
 color: #fff;
@@ -139,7 +140,7 @@ export const ResetButton = styled.button`
 color: #fff;
 padding: 10px;
 border: none;
-min-width: 90%;
+min-width: 50%;
 max-width: 400px;
 margin: auto;
 box-shadow: -1px 0px 1px 0px #fff;
