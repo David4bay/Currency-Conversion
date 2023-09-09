@@ -25,10 +25,8 @@ function Body() {
         const name = e.target.name;
         const value = e.target.value;
         const type = e.target.name === "defaultTypeAmount" ? currency.defaultType : currency.convertedType
-        setCurrency({ ...currency, [name]: value.toLocaleString("en-US", { style: "currency", currency: type}) })
-
-        // if (currency.defaultTypeAmount.length > 10 || currency.convertedTypeAmount.length > 10) 
-        //     {setCurrency({...currency, [name]: value.slice(0, 10)})}
+        
+        setCurrency({ ...currency, [name]: Number(value.toLocaleString("en-US", { style: "currency", currency: type})) })
     }
 
     const swapCurrencies = () => {
@@ -61,6 +59,7 @@ function Body() {
                 onChange={changeCurrencyHandler}
                 min={0}
                 max={999999}
+                step={0.5}
                 />
             </FirstFieldSet>
             <SecondFieldSet>
