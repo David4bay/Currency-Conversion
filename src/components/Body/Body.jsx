@@ -1,88 +1,43 @@
-import { useState } from 'react';
+/* eslint-disable react/prop-types */
+
+import DefaultResetButton from 
+'../../util/FormElements/Buttons/DefaultResetButton';
+import SwapButton from 
+'../../util/FormElements/Buttons/SwapButton';
+import ConvertedAmountLabel from 
+'../../util/FormElements/ConvertedAmountLabel/ConvertedAmountLabel';
+import DefaultCurrency from 
+'../../util/FormElements/DefaultCurrency/DefaultCurrency';
+import DefaultLabel from 
+'../../util/FormElements/DefaultLabels/Label';
+import ConvertedCurrency from 
+'../../util/FormElements/ConvertedCurrency/ConvertedCurrency'
+
 import {
     FormElement,
     Legend,
     FirstFieldSet,
     SecondFieldSet,
-    ConvertTitle,
-    CurrencyInput,
-    SwapCurrencyButton,
-    ResetButton,
     ThirdFieldSet,
-    SwapCurrencyText
-} from '../../util/BodyUtil';
+} from '../../util/styles/BodyUtil';
 
-function Body() {
 
-    const [currency, setCurrency] = useState({
-        defaultType: 'USD',
-        defaultTypeAmount: 0,
-        convertedType: 'EUR',
-        convertedTypeAmount: 0
-    })
-
-    const changeCurrencyHandler = e => {
-        const name = e.target.name;
-        const value = e.target.value;
-        const type = e.target.name === "defaultTypeAmount" ? currency.defaultType : currency.convertedType
-        
-        setCurrency({ ...currency, [name]: Number(value.toLocaleString("en-US", { style: "currency", currency: type})) })
-    }
-
-    const swapCurrencies = () => {
-        const defaultTypes = currency.defaultType;
-        const defaultAmounts = currency.defaultTypeAmount;
-        const convertedTypes = currency.convertedType;
-        const convertedTypeAmounts = currency.convertedTypeAmount;
-
-        setCurrency({
-            ...currency, 
-            defaultType: convertedTypes, 
-            defaultTypeAmount: convertedTypeAmounts, 
-            convertedType: defaultTypes, 
-            convertedTypeAmount: defaultAmounts
-        })
-    }
+function Body({currency, swapCurrencies, changeCurrencyHandler, convertedNumber, defaultNumber}) {
 
     return (
         <FormElement>
                 <Legend>Swap and Compare Currency</Legend>
             <FirstFieldSet>
-                <label htmlFor="startingCurrency">
-                    <ConvertTitle>Convert from</ConvertTitle> {currency.defaultTypeAmount.toLocaleString("en-US",{
-                    style: "currency",
-                    currency: currency.defaultType
-                }) || 0}
-                </label>
-                <CurrencyInput type="number" name="defaultTypeAmount" id="defaultTypeAmount" 
-                value={currency.defaultTypeAmount}
-                onChange={changeCurrencyHandler}
-                min={0}
-                max={999999}
-                step={0.5}
-                />
+                <DefaultLabel defaultNumber={defaultNumber} currency={currency} />
+                <DefaultCurrency currency={currency} changeCurrencyHandler={changeCurrencyHandler} />
             </FirstFieldSet>
             <SecondFieldSet>
-                <SwapCurrencyButton onClick={swapCurrencies}>
-                    Swap <SwapCurrencyText>{currency.defaultType}</SwapCurrencyText>/<SwapCurrencyText>{currency.convertedType}</SwapCurrencyText>
-                </SwapCurrencyButton>
-                <ResetButton>
-                    Reset Currencies
-                </ResetButton>
+                <SwapButton currency={currency} swapCurrencies={swapCurrencies} />
+                <DefaultResetButton />
             </SecondFieldSet>
             <ThirdFieldSet>
-                <label htmlFor="convertedCurrency">
-                    <ConvertTitle>Convert to</ConvertTitle> {currency.convertedTypeAmount.toLocaleString("en-US",{
-                        style: "currency",
-                        currency: currency.convertedType
-                    }) || 0}
-                </label>
-                <CurrencyInput type="number" name="convertedTypeAmount" id="convertedTypeAmount"
-                value={currency.convertedTypeAmount}
-                onChange={changeCurrencyHandler}
-                min={0}
-                step={0.5}
-                />
+                <ConvertedAmountLabel convertedNumber={convertedNumber} currency={currency} />
+                <ConvertedCurrency currency={currency} changeCurrencyHandler={changeCurrencyHandler} />
             </ThirdFieldSet>
         </FormElement>
     )
