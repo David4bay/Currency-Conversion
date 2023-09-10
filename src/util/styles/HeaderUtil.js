@@ -1,8 +1,17 @@
 import styled from 'styled-components';
 
 export const HeaderContainer = styled.div`
-    display: block;
+    display: flex;
     width: 100%;
+    justify-content: center;
+    align-items: center;
+
+    @media (max-width: 800px) {
+        diplay: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-content: center;
+    }
 `
 
 export const Heading = styled.header`
@@ -16,21 +25,21 @@ export const Heading = styled.header`
     letter-spacing: 1px;
     padding-top: 10vh;
     z-index: -1;
-    overflow: hidden;
-    perspective: 1000px;
+    
 
-    @media (min-width: 900px) {
-        
+    @media (max-width: 800px) {
+        display: flex;
         flex-direction: column;
+        justify-content: center;
+        align-items: center;
         gap: 2rem;
-        width: 100%;
+        width: 50%;
+
     }
 `
 
 export const HeadingText = styled.span`
-    display: block;
     width: fit-content;
-    margin: auto;
     padding: 10px;
     z-index: -1;
     border-radius: 5px;
@@ -42,6 +51,10 @@ export const HeadingText = styled.span`
     &:hover {
         cursor: pointer;
     }
+
+    @media (max-width: 800px) {
+        font-size: clamp(1vw, 50px, 60px);
+    }
 `
 
 export const ExclamationMark = styled.span`
@@ -50,7 +63,6 @@ export const ExclamationMark = styled.span`
 `
 
 export const CurrencyFont = {
-    fontSize: 'clamp(1vw, 85px, 96px)',
     color: '#4FBBBF',
     boxShadow: '0px 0px 10px 1px #fff',
     padding: '5px',
@@ -60,8 +72,10 @@ export const CurrencyFont = {
 export const FontContainer = styled.span`
     display: flex;
     justify-content: center;
+    align-items: center;
     gap: 10px;
     margin-bottom: 10px;
     padding: 15px;
+    font-size: clamp(1vw, 50px, 60px);
 `
 

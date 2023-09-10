@@ -5,9 +5,9 @@ import {
 
 const DefaultLabel = ({currency, defaultNumber}) => {
     return (
-        <label htmlFor="startingCurrency">
+        <label htmlFor="defaultTypeAmount">
                     <ConvertTitle>Convert from</ConvertTitle> 
-                    {defaultNumber ? defaultNumber.toLocaleString("en-US",{
+                    {currency.convertedTypeAmount ? defaultNumber.toLocaleString("en-US",{
                     style: "currency",
                     currency: currency.defaultType
                 }) : currency.defaultTypeAmount.toLocaleString("en-US",{
@@ -18,4 +18,4 @@ const DefaultLabel = ({currency, defaultNumber}) => {
     )
 }
 
-export default DefaultLabel;
+export default DefaultLabel

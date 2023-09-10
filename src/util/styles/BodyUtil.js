@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const FormElement = styled.div`
 display: grid;
@@ -9,10 +9,12 @@ margin: auto;
 align-items: start;
 margin-top: 15px;
 
-@media (max-width: 900px) {
-    display: grid;
-    grid-template-columns: auto;
-    grid-template-rows: repeat(3, auto);
+@media (max-width: 800px) {
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+    justify-content: center;
+    align-items: center;
 }
 `
 
@@ -31,6 +33,10 @@ font-style: Verdana, Tahoma, sans-serif;
 font-weight: 600;
 font-size: clamp(1vw, 20px, 22px);
 padding: 50px;
+
+@media (max-width: 800px) {
+    
+}
 `
 
 export const FirstFieldSet = styled.fieldset`
@@ -49,8 +55,8 @@ font-size: clamp(1vw, 20px, 22px);
 text-align: center;
 padding: 10px;
 
-@media (max-width: 900px) { 
-    display: grid;
+@media (max-width: 800px) { 
+    
 }
 `
 
@@ -70,9 +76,8 @@ font-size: clamp(1vw, 20px, 22px);
 text-align: center;
 padding: 25px;
 
-@media (max-width: 900px) { 
-    display: grid;
-    width: 100%;
+@media (max-width: 800px) { 
+    
 }
 `
 
@@ -91,8 +96,7 @@ font-size: clamp(1vw, 20px, 22px);
 text-align: center;
 padding: 10px;
 
-@media (max-width: 900px) { 
-    display: grid;
+@media (max-width: 800px) { 
     
 }
 `
@@ -132,7 +136,7 @@ backdrop-filter: blur(5px);
     cursor: pointer;
 }
 
-@media (max-width: 900px) { 
+@media (max-width: 800px) { 
 }
 `
 
@@ -155,8 +159,7 @@ backdrop-filter: blur(5px);
         transform: translateY(6%);
     }
 
-@media (max-width: 900px) { 
-    display: grid;    
-    margin-bottom: 100px;
+@media (max-width: 800px) { 
+   
 }
 `

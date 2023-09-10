@@ -1,4 +1,4 @@
-import { loadingStyle } from "../styles/LoadingStyle";
+import { loadingStyle } from "../styles/LoadingStyle"
 
 
 function LoadingState() {

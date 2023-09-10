@@ -1,15 +1,15 @@
 /* eslint-disable react/prop-types */
 
 import DefaultResetButton from 
-'../../util/FormElements/Buttons/DefaultResetButton';
+'../../util/FormElements/Buttons/DefaultResetButton'
 import SwapButton from 
-'../../util/FormElements/Buttons/SwapButton';
+'../../util/FormElements/Buttons/SwapButton'
 import ConvertedAmountLabel from 
-'../../util/FormElements/ConvertedAmountLabel/ConvertedAmountLabel';
+'../../util/FormElements/ConvertedAmountLabel/ConvertedAmountLabel'
 import DefaultCurrency from 
-'../../util/FormElements/DefaultCurrency/DefaultCurrency';
+'../../util/FormElements/DefaultCurrency/DefaultCurrency'
 import DefaultLabel from 
-'../../util/FormElements/DefaultLabels/Label';
+'../../util/FormElements/DefaultLabels/Label'
 import ConvertedCurrency from 
 '../../util/FormElements/ConvertedCurrency/ConvertedCurrency'
 
@@ -19,7 +19,7 @@ import {
     FirstFieldSet,
     SecondFieldSet,
     ThirdFieldSet,
-} from '../../util/styles/BodyUtil';
+} from '../../util/styles/BodyUtil'
 
 
 function Body({currency, swapCurrencies, changeCurrencyHandler, convertedNumber, defaultNumber}) {
@@ -44,4 +44,4 @@ function Body({currency, swapCurrencies, changeCurrencyHandler, convertedNumber,
 }
 
 
-export default Body;
+export default Body

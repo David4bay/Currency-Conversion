@@ -1,6 +1,6 @@
-import { useState, useEffect, useRef, useCallback } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faNairaSign, faDollarSign, faPoundSign, faYenSign } from '@fortawesome/free-solid-svg-icons';
+import { useState, useEffect, useRef, useCallback } from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faNairaSign, faDollarSign, faPoundSign, faYenSign } from '@fortawesome/free-solid-svg-icons'
 
 import {
     HeaderContainer,
@@ -9,26 +9,26 @@ import {
     HeadingText,
     CurrencyFont,
     FontContainer
-} from '../../util/styles/HeaderUtil';
+} from '../../util/styles/HeaderUtil'
 
 function Header() {
     
-    const [effect, setEffect] = useState(false);
-    const effectRef = useRef(null);
+    const [effect, setEffect] = useState(false)
+    const effectRef = useRef(null)
 
     const runEffect = useCallback((e) => {
         setEffect(true)
         if (effect) {
-            let xAxis = (window.innerWidth / 2 - e.pageX) / 15;
-            let yAxis = (window.innerHeight / 2 - e.pageY) / 15;
-            e.target.style.transform = `rotateX(${xAxis}deg) rotateY(${yAxis}deg)`;
+            let xAxis = (window.innerWidth / 2 - e.pageX) / 15
+            let yAxis = (window.innerHeight / 2 - e.pageY) / 15
+            e.target.style.transform = `rotateX(${xAxis}deg) rotateY(${yAxis}deg)`
         }
     }, [effect])
     
     useEffect(() => {
-        setEffect(false);
+        setEffect(false)
         return () => {
-            setEffect(true);
+            setEffect(true)
         }
     }, [effect])
 
@@ -51,4 +51,4 @@ function Header() {
     )
 }
 
-export default Header;
+export default Header
