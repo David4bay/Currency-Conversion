@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react"
+import LoadingState from "./util/LoadingState/LoadingState";
 const Body = React.lazy(() => import("./components/Body/Body"))
 const Header = React.lazy(() => import("./components/Header/Header"))
 const Nav = React.lazy(() => import("./components/Navigation/Nav"))
@@ -61,11 +62,9 @@ function App() {
     })
   }, [currency])
 
-  // throw new Error("HAHAHAHAHAHA")
-
   return (
     <div>
-      <React.Suspense fallback={<h1>Loading...</h1>}>
+      <React.Suspense fallback={<LoadingState />}>
     <Nav />
     <main>
     <Header />

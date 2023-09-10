@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import React from "react"
+import { backButton, errorContainerStyle } from "./util/styles/ErrorStyles";
 
 class ErrorBoundary extends React.Component {
     constructor(props) {
@@ -17,8 +18,15 @@ class ErrorBoundary extends React.Component {
     }
   
     render() {
+
       if (this.state.hasError) {
-        return <h1>Something went wrong.</h1>;
+        return (
+          <div style={errorContainerStyle}>
+            <h1>Unfortunately, something went wrong.</h1>
+            <br/>
+            <a style={backButton} href="/">Go Back</a>
+          </div>
+        )
       }
   
       return this.props.children; 
