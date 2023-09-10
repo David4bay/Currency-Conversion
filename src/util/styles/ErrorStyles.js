@@ -10,7 +10,7 @@ export const errorContainerStyle = {
 
 export const backButton = {
     color: "#ffffff", 
-    fontSize: "clamp(1vw, 35px, 55px)", 
+    fontSize: "clamp(1vw, 30px, 35px)", 
     textDecoration: "none", backgroundColor: "tranparent", 
     borderRadius: "15px", 
     padding: "20px", 

@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import {
     CurrencyInput,
-} from '../../styles/BodyUtil';
+} from '../../styles/BodyUtil'
 
 const ConvertedCurrency = ({currency, changeCurrencyHandler}) => {
     return (
@@ -16,4 +16,4 @@ const ConvertedCurrency = ({currency, changeCurrencyHandler}) => {
     )
 }
 
-export default ConvertedCurrency;
+export default ConvertedCurrency

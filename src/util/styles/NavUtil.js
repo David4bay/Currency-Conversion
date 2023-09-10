@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const HomeLink = styled.nav`
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: row;
     color: white;
     margin-bottom: 30px;
     padding-bottom: 12px;

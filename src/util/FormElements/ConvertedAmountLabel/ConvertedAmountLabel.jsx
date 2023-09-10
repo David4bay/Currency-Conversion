@@ -1,13 +1,13 @@
 /* eslint-disable react/prop-types */
 import {
     ConvertTitle,
-} from '../../styles/BodyUtil';
+} from '../../styles/BodyUtil'
 
 const ConvertedAmountLabel = ({currency, convertedNumber}) => {
     return (
-        <label htmlFor="convertedCurrency">
+        <label htmlFor="convertedTypeAmount">
                     <ConvertTitle>Converted to</ConvertTitle> 
-                    {convertedNumber ? convertedNumber.toLocaleString("en-US",{
+                    {currency.defaultTypeAmount ? convertedNumber.toLocaleString("en-US",{
                         style: "currency",
                         currency: currency.convertedType
                     }) : 
@@ -19,4 +19,4 @@ const ConvertedAmountLabel = ({currency, convertedNumber}) => {
     )
 }
 
-export default ConvertedAmountLabel;
+export default ConvertedAmountLabel

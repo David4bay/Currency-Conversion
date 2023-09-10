@@ -2,7 +2,7 @@
 import {
     SwapCurrencyButton,
     SwapCurrencyText
-} from '../../styles/BodyUtil';
+} from '../../styles/BodyUtil'
 
 const SwapButton = ({currency, swapCurrencies}) => {
     return (
@@ -12,4 +12,4 @@ const SwapButton = ({currency, swapCurrencies}) => {
 )
     }
 
-export default SwapButton;
+export default SwapButton

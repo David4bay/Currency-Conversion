@@ -1,20 +1,20 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import React from "react"
-import { backButton, errorContainerStyle } from "./util/styles/ErrorStyles";
+import { backButton, errorContainerStyle } from "./util/styles/ErrorStyles"
 
 class ErrorBoundary extends React.Component {
     constructor(props) {
-      super(props);
-      this.state = { hasError: false };
+      super(props)
+      this.state = { hasError: false }
     }
   
     static getDerivedStateFromError(error) {
-      return { hasError: true };
+      return { hasError: true }
     }
   
     componentDidCatch(error, errorInfo) {
-      console.log(error, errorInfo);
+      console.log(error, errorInfo)
     }
   
     render() {
@@ -28,9 +28,8 @@ class ErrorBoundary extends React.Component {
           </div>
         )
       }
-  
-      return this.props.children; 
+      return this.props.children 
     }
   }
 
-  export default ErrorBoundary;
+  export default ErrorBoundary
