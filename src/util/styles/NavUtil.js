@@ -12,16 +12,18 @@ export const HomeLink = styled.nav`
 export const NavContainer = styled.ul`
     padding-top: 1rem;
     list-style: none;
-    padding-right: 5rem;
-    font-size: 22px;
     transition: all 0.3s ease;
     `
     
 export const IconText = styled.span`
+    font-size: 20px;
     padding-right: 12px;
 `
 
 export const Icon = styled.li`
+    display: flex;
+    margin-left: 12px;
+    gap: 1rem;
     padding: 5px;
 
     &:hover {
