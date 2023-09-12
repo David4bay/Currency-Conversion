@@ -26,12 +26,12 @@ function Header() {
         }
     }, [effect])
     
-    useEffect(() => {
+    useEffect( useCallback(() => {
         setEffect(false)
         return () => {
             setEffect(true)
         }
-    }, [effect])
+    }, [effect]), [effect])
 
 
     return (
