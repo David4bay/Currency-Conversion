@@ -23,7 +23,7 @@ export const IconText = styled.span`
 export const Icon = styled.li`
     display: flex;
     margin-left: 12px;
-    gap: 1rem;
+    gap: 0.8rem;
     padding: 5px;
 
     &:hover {

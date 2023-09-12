@@ -3,7 +3,7 @@ import styled from 'styled-components'
 export const FormElement = styled.div`
 display: grid;
 grid-template-columns: repeat(3, auto);
-grid-template-rows: repeat(3, auto);
+grid-template-rows: repeat(4, auto);
 place-items: center;
 margin: auto;
 align-items: start;
@@ -60,6 +60,10 @@ padding: 10px;
 }
 `
 
+export const Label = styled.label`
+overflow: hidden;
+`
+
 export const SecondFieldSet = styled.fieldset`
 display: grid;
 grid-column: 2/3;
@@ -79,6 +83,12 @@ padding: 25px;
 @media (max-width: 800px) { 
     
 }
+`
+export const Select = styled.select`
+background-color: transparent;
+padding: 8px;
+color: #ffffff;
+box-shadow: 2px 8px 0px 0px black;
 `
 
 export const ThirdFieldSet = styled.fieldset`
@@ -107,8 +117,10 @@ display: block;
 
 export const CurrencyInput = styled.input`
 border: none;
-padding: 7px;
-border-radius: 5px;
+padding: 12px 8px 8px 8px;
+background-color: transparent;
+box-shadow: 2px 2px 0px 3px black;
+color: #ffffff;
 `
 
 export const SwapCurrencyText = styled.strong`
@@ -116,15 +128,14 @@ export const SwapCurrencyText = styled.strong`
 `
 
 export const SwapCurrencyButton = styled.button`
-display: inline-grid;
-
-min-width: 50%;
+display: grid;
+min-width: 100px;
 max-width: 400px;
 margin: auto;
 color: #fff;
 padding: 10px;
 border: none;
-box-shadow: -1px 0px 1px 0px #fff;
+box-shadow: 2px 8px 0px 0px black;
 background-color: hsla(0, 0%, 0%, 0.45);
 backdrop-filter: blur(5px);
 
@@ -134,6 +145,7 @@ backdrop-filter: blur(5px);
 
 &:hover {
     cursor: pointer;
+    transform: translateY(3px);
 }
 
 @media (max-width: 800px) { 
@@ -144,15 +156,17 @@ export const ResetButton = styled.button`
 color: #fff;
 padding: 10px;
 border: none;
-min-width: 50%;
+min-width: 100px;
 max-width: 400px;
 margin: auto;
-box-shadow: -1px 0px 1px 0px #fff;
+box-shadow: 2px 8px 0px 0px black;
 background-color: hsla(0, 0%, 0%, 0.45);
 backdrop-filter: blur(5px);
+transition: all 0.1s linear;
 
     &:hover {
         cursor: pointer;
+        transform: translateY(3px);
     }
 
     &:active {
