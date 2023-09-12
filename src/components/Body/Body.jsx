@@ -19,6 +19,7 @@ import {
     FirstFieldSet,
     SecondFieldSet,
     ThirdFieldSet,
+    Select,
 } from '../../util/styles/BodyUtil'
 
 
@@ -32,6 +33,11 @@ function Body({currency, swapCurrencies, changeCurrencyHandler, convertedNumber,
                 <DefaultCurrency currency={currency} changeCurrencyHandler={changeCurrencyHandler} />
             </FirstFieldSet>
             <SecondFieldSet>
+                <Select>
+                    <option>
+
+                    </option>
+                </Select>
                 <SwapButton currency={currency} swapCurrencies={swapCurrencies} />
                 <DefaultResetButton />
             </SecondFieldSet>
