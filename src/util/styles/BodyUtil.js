@@ -12,7 +12,6 @@ margin-top: 15px;
 @media (max-width: 800px) {
     display: flex;
     flex-direction: column;
-    gap: 0px;
     justify-content: center;
     align-items: center;
 }
@@ -33,10 +32,6 @@ font-style: Verdana, Tahoma, sans-serif;
 font-weight: 600;
 font-size: clamp(1vw, 20px, 22px);
 padding: 50px;
-
-@media (max-width: 800px) {
-    
-}
 `
 
 export const FirstFieldSet = styled.fieldset`
@@ -46,29 +41,24 @@ grid-row: 2/3;
 text-align: center;
 color: #ffffff;
 gap: 8px;
-max-width: 182.5px;
+max-width: 190px;
 letter-spacing: 3px;
 border: none;
 text-transform: Capitalize;
 font-style: Verdana, Tahoma, sans-serif;
 font-weight: 600;
-
 font-size: clamp(1vw, 20px, 22px);
 text-align: center;
 padding: 10px;
 overflow: hidden;
-
-@media (max-width: 800px) { 
-    
-}
 `
 
 export const Label = styled.label`
-max-width: 182.5px;
+max-width: 190px;
 overflow: hidden;
 `
 export const ConvertedLabel = styled.label`
-max-width: 182.5px;
+max-width: 190px;
 overflow: hidden;
 `
 
@@ -87,18 +77,17 @@ font-weight: 600;
 font-size: clamp(1vw, 20px, 22px);
 text-align: center;
 padding: 25px;
-
-@media (max-width: 800px) { 
-    
-}
 `
 export const Select = styled.select`
-display: block;
+display: grid;
+grid-row: 2/3;
+margin-top: 8px;
 background-color: transparent;
 padding: 8px;
 color: #ffffff;
 width: 100%;
 box-shadow: 2px 8px 0px 0px black;
+place-content: end;
 
 @media (max-width: 800px) {
     display: block;
@@ -113,7 +102,7 @@ grid-column: 3/4;
 grid-row: 2/3;
 color: #ffffff;
 gap: 8px;
-max-width: 182.5px;
+max-width: 190px;
 letter-spacing: 3px;
 border: none;
 text-transform: Capitalize;
@@ -123,10 +112,6 @@ font-size: clamp(1vw, 20px, 22px);
 text-align: center;
 padding: 10px;
 overflow: hidden;
-
-@media (max-width: 800px) { 
-    
-}
 `
 
 export const ConvertTitle = styled.span`
@@ -139,6 +124,7 @@ padding: 12px 8px 8px 8px;
 background-color: transparent;
 box-shadow: 2px 2px 0px 3px black;
 color: #ffffff;
+letter-spacing: 2px;
 `
 
 export const SwapCurrencyText = styled.strong`
@@ -147,9 +133,10 @@ export const SwapCurrencyText = styled.strong`
 
 export const SwapCurrencyButton = styled.button`
 display: grid;
+grid-row: 5/6;
 min-width: 100px;
 max-width: 400px;
-margin: auto;
+margin: -50px auto;
 color: #fff;
 padding: 10px;
 border: none;
@@ -165,18 +152,17 @@ backdrop-filter: blur(5px);
     cursor: pointer;
     transform: translateY(3px);
 }
-
-@media (max-width: 800px) { 
-}
 `
 
 export const ResetButton = styled.button`
+display: grid;
+grid-row: 6/7;
 color: #fff;
 padding: 10px;
 border: none;
 min-width: 100px;
 max-width: 400px;
-margin: auto;
+margin: 50px auto;
 box-shadow: 2px 8px 0px 0px black;
 background-color: hsla(0, 0%, 0%, 0.45);
 backdrop-filter: blur(5px);
@@ -190,8 +176,4 @@ transition: all 0.1s linear;
     &:active {
         transform: translateY(6%);
     }
-
-@media (max-width: 800px) { 
-   
-}
 `
