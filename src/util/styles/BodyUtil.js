@@ -46,7 +46,7 @@ grid-row: 2/3;
 text-align: center;
 color: #ffffff;
 gap: 8px;
-width: 182.5px;
+max-width: 182.5px;
 letter-spacing: 3px;
 border: none;
 text-transform: Capitalize;
@@ -64,6 +64,11 @@ overflow: hidden;
 `
 
 export const Label = styled.label`
+max-width: 182.5px;
+overflow: hidden;
+`
+export const ConvertedLabel = styled.label`
+max-width: 182.5px;
 overflow: hidden;
 `
 
@@ -108,7 +113,7 @@ grid-column: 3/4;
 grid-row: 2/3;
 color: #ffffff;
 gap: 8px;
-width: 182.5px;
+max-width: 182.5px;
 letter-spacing: 3px;
 border: none;
 text-transform: Capitalize;
