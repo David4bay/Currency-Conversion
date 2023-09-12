@@ -46,14 +46,17 @@ grid-row: 2/3;
 text-align: center;
 color: #ffffff;
 gap: 8px;
+width: 182.5px;
 letter-spacing: 3px;
 border: none;
 text-transform: Capitalize;
 font-style: Verdana, Tahoma, sans-serif;
 font-weight: 600;
+
 font-size: clamp(1vw, 20px, 22px);
 text-align: center;
 padding: 10px;
+overflow: hidden;
 
 @media (max-width: 800px) { 
     
@@ -71,8 +74,8 @@ grid-row: 2/3;
 gap: 35px;
 color: #ffffff;
 letter-spacing: 3px;
-border: none;
 width: 100%;
+border: none;
 text-transform: Capitalize;
 font-style: Verdana, Tahoma, sans-serif;
 font-weight: 600;
@@ -85,10 +88,18 @@ padding: 25px;
 }
 `
 export const Select = styled.select`
+display: block;
 background-color: transparent;
 padding: 8px;
 color: #ffffff;
+width: 100%;
 box-shadow: 2px 8px 0px 0px black;
+
+@media (max-width: 800px) {
+    display: block;
+    width: 75%;
+    margin: auto;
+}
 `
 
 export const ThirdFieldSet = styled.fieldset`
@@ -97,6 +108,7 @@ grid-column: 3/4;
 grid-row: 2/3;
 color: #ffffff;
 gap: 8px;
+width: 182.5px;
 letter-spacing: 3px;
 border: none;
 text-transform: Capitalize;
@@ -105,6 +117,7 @@ font-weight: 600;
 font-size: clamp(1vw, 20px, 22px);
 text-align: center;
 padding: 10px;
+overflow: hidden;
 
 @media (max-width: 800px) { 
     
