@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useCallback } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faNairaSign, faDollarSign, faPoundSign, faYenSign } from '@fortawesome/free-solid-svg-icons'
 
@@ -14,7 +14,6 @@ import {
 function Header() {
     
     const [effect, setEffect] = useState(false)
-    const effectRef = useRef(null)
 
     const runEffect = useCallback((e) => {
         console.log(`MOUSE MOVEMENT DETECTED`)
@@ -28,16 +27,17 @@ function Header() {
     
     useEffect(() => {
         setEffect(true)
+        
         return () => {
             setEffect(false)
         }
-    }, [effect]), [effect])
+    }, [effect])
 
 
     return (
         <HeaderContainer onMouseMove={runEffect}>
             <Heading>
-                <HeadingText ref={effectRef}>
+                <HeadingText>
                     Convert Currency
                 <ExclamationMark>!</ExclamationMark>
                 </HeadingText>
