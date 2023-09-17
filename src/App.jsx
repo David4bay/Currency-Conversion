@@ -63,7 +63,7 @@ function App() {
         convertedTypeAmount: defaultAmounts
     })
   }, [currency, swap])
-
+ 
   return (
       <React.Suspense fallback={<LoadingState />}>
     <div>

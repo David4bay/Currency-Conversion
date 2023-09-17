@@ -1,33 +1,33 @@
 :root {
-  --background-image1: linear-gradient(to left, 
-  #272829,
-  #27374D,
-  #2B2A4C,
-  #212a3E,
-  #393646,
-  #454545
-  );
+    --background-image1: linear-gradient(to left,
+    #272829,
+    #27374D,
+    #2B2A4C,
+    #212A3E,
+    #393646,
+    #454545
+    )
 }
 
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 *::before, *::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-  background: var(--background-image1);
-  font-family: 'Ubuntu', sans-serif;
-  min-height: 100vh;
-  backdrop-filter: blur(5px);
+    background: var(--background-image1);
+    font-family: "Ubuntu", sans-serif;
+    min-height: 100vh;
+    backdrop-filter: blur(5px);
 }
 
 a:hover {
-  cursor: pointer;
+    cursor: pointer;
 }
