@@ -17,6 +17,7 @@ function Header() {
     const effectRef = useRef(null)
 
     const runEffect = useCallback((e) => {
+        console.log(`MOUSE MOVEMENT DETECTED`)
         setEffect(true)
         if (effect) {
             let xAxis = (window.innerWidth / 2 - e.pageX) / 15
@@ -30,7 +31,7 @@ function Header() {
         return () => {
             setEffect(false)
         }
-    }, [effect])
+    }, [effect]), [effect])
 
 
     return (
