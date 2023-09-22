@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-
+import {useState} from "react"
 import DefaultResetButton from 
 '../../util/FormElements/Buttons/DefaultResetButton'
 import SwapButton from 
@@ -27,6 +27,11 @@ import currencySymbols from '../../util/CurrencySymbols/currencySymbols'
 
 function Body({currency, swapCurrencies, changeCurrencyHandler, convertedNumber, defaultNumber}) {
 
+    const [money, setMoney] = useState({
+        USD: "USD",
+        NGN: "NGN"
+    })
+
     return (
         <FormElement>
                 <Legend>Swap and Compare Currency</Legend>
@@ -40,12 +45,12 @@ function Body({currency, swapCurrencies, changeCurrencyHandler, convertedNumber,
             </FirstFieldSet>
             <SecondFieldSet>
                 <span style={{display: "flex", width: "max-content", margin: "auto", gap: "15px"}}>
-                <Select value="USD" onChange={(e) => e.target.value}>
+                <Select value={money["USD"]} onChange={(e) => setMoney(e.target.value)}>
                         {currencySymbols.map((symbol) => (
                             <Option key={symbol} value={symbol}>{symbol}</Option>
                         ))}
                 </Select>
-                <Select value="NGN" onChange={(e) => e.target.value}>
+                <Select value={money["NGN"]} onChange={(e) => setMoney(e.target.value)}>
                         {currencySymbols.map((symbol) => (
                             <Option key={symbol} value={symbol}>{symbol}</Option>
                         ))}

@@ -4,6 +4,7 @@ export const FormElement = styled.div`
 display: grid;
 grid-template-columns: repeat(3, auto);
 grid-template-rows: repeat(4, auto);
+max-width: 800px;
 place-items: center;
 margin: auto;
 align-items: start;
@@ -50,16 +51,15 @@ font-weight: 600;
 font-size: clamp(1vw, 20px, 22px);
 text-align: center;
 padding: 10px;
-overflow: hidden;
+overflow: visible;
+overflow-wrap: anywhere;
 `
 
 export const Label = styled.label`
 max-width: 190px;
-overflow: hidden;
 `
 export const ConvertedLabel = styled.label`
 max-width: 190px;
-overflow: hidden;
 `
 
 export const SecondFieldSet = styled.fieldset`
@@ -114,7 +114,8 @@ font-weight: 600;
 font-size: clamp(1vw, 20px, 22px);
 text-align: center;
 padding: 10px;
-overflow: hidden;
+overflow: visible;
+overflow-wrap: anywhere;
 `
 
 export const ConvertTitle = styled.span`
