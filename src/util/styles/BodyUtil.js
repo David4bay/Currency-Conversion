@@ -81,19 +81,22 @@ padding: 25px;
 export const Select = styled.select`
 display: grid;
 grid-row: 2/3;
-margin-top: 8px;
-background-color: transparent;
+margin: 8px auto 0px auto;
+background: transparent;
 padding: 8px;
 color: #ffffff;
-width: 100%;
 box-shadow: 2px 8px 0px 0px black;
-place-content: end;
 
 @media (max-width: 800px) {
     display: block;
-    width: 75%;
     margin: auto;
 }
+`
+
+export const Option = styled.option`
+background: #212A3E;
+color: #ffffff;
+text-align: center;
 `
 
 export const ThirdFieldSet = styled.fieldset`

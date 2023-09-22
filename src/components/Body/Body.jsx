@@ -20,7 +20,9 @@ import {
     SecondFieldSet,
     ThirdFieldSet,
     Select,
+    Option,
 } from '../../util/styles/BodyUtil'
+import currencySymbols from '../../util/CurrencySymbols/currencySymbols'
 
 
 function Body({currency, swapCurrencies, changeCurrencyHandler, convertedNumber, defaultNumber}) {
@@ -29,21 +31,38 @@ function Body({currency, swapCurrencies, changeCurrencyHandler, convertedNumber,
         <FormElement>
                 <Legend>Swap and Compare Currency</Legend>
             <FirstFieldSet>
-                <DefaultLabel defaultNumber={defaultNumber} currency={currency} />
-                <DefaultCurrency currency={currency} changeCurrencyHandler={changeCurrencyHandler} />
+                <DefaultLabel 
+                defaultNumber={defaultNumber} 
+                currency={currency} />
+                <DefaultCurrency 
+                currency={currency} 
+                changeCurrencyHandler={changeCurrencyHandler} />
             </FirstFieldSet>
             <SecondFieldSet>
-                <Select>
-                    <option>
-
-                    </option>
+                <span style={{display: "flex", width: "max-content", margin: "auto", gap: "15px"}}>
+                <Select value="USD" onChange={(e) => e.target.value}>
+                        {currencySymbols.map((symbol) => (
+                            <Option key={symbol} value={symbol}>{symbol}</Option>
+                        ))}
                 </Select>
-                <SwapButton currency={currency} swapCurrencies={swapCurrencies} />
+                <Select value="NGN" onChange={(e) => e.target.value}>
+                        {currencySymbols.map((symbol) => (
+                            <Option key={symbol} value={symbol}>{symbol}</Option>
+                        ))}
+                </Select>
+                </span>
+                <SwapButton 
+                currency={currency} 
+                swapCurrencies={swapCurrencies} />
                 <DefaultResetButton />
             </SecondFieldSet>
             <ThirdFieldSet>
-                <ConvertedAmountLabel convertedNumber={convertedNumber} currency={currency} />
-                <ConvertedCurrency currency={currency} changeCurrencyHandler={changeCurrencyHandler} />
+                <ConvertedAmountLabel 
+                convertedNumber={convertedNumber} 
+                currency={currency} />
+                <ConvertedCurrency 
+                currency={currency} 
+                changeCurrencyHandler={changeCurrencyHandler} />
             </ThirdFieldSet>
         </FormElement>
     )
