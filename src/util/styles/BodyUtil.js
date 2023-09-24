@@ -78,6 +78,13 @@ font-size: clamp(1vw, 20px, 22px);
 text-align: center;
 padding: 25px;
 `
+export const Span = styled.span`
+display: flex; 
+width: max-content; 
+margin: auto; 
+gap: 15px;
+`
+
 export const Select = styled.select`
 display: grid;
 grid-row: 2/3;

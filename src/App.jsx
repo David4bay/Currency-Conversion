@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react"
+import React from "react"
 import Footer from "./components/Footer/Footer"
 import LoadingState from "./util/LoadingState/LoadingState"
 const Body = React.lazy(() => import("./components/Body/Body"))
@@ -13,9 +13,7 @@ function App() {
       <Nav />
       <main>
       <Header />
-      <Body 
-
-      />
+      <Body />
       <Footer />
       </main>
       </div>

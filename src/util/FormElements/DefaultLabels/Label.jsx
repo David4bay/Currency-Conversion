@@ -3,17 +3,11 @@ import {
     ConvertTitle, Label,
 } from '../../styles/BodyUtil'
 
-const DefaultLabel = ({currency, defaultNumber}) => {
+const DefaultLabel = () => {
     return (
         <Label htmlFor="defaultTypeAmount">
                     <ConvertTitle>Convert from</ConvertTitle> 
-                    {currency.convertedTypeAmount ? defaultNumber.toLocaleString("en-US",{
-                    style: "currency",
-                    currency: currency.defaultType
-                }) : currency.defaultTypeAmount.toLocaleString("en-US",{
-                    style: "currency",
-                    currency: currency.defaultType
-                })}
+                    {}
                 </Label>
     )
 }

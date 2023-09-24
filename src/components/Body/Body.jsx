@@ -8,6 +8,7 @@ import {
     ThirdFieldSet,
     Select,
     Option,
+    Span,
 } from '../../util/styles/BodyUtil'
 
 import DefaultResetButton from 
@@ -26,7 +27,7 @@ import currencySymbols from
 '../../util/CurrencySymbols/currencySymbols'
 import { useSelector, useDispatch } from "react-redux"
 
-function Body({currency, swapCurrencies, changeCurrencyHandler, convertedNumber, defaultNumber}) {
+function Body() {
 
     const oldCurrency = useSelector((state) => state.old_currency)
     const oldAmount = useSelector((state) => state.old_amount)
@@ -45,14 +46,16 @@ function Body({currency, swapCurrencies, changeCurrencyHandler, convertedNumber,
                 <Legend>Swap and Compare Currency</Legend>
             <FirstFieldSet>
                 <DefaultLabel 
-                defaultNumber={defaultNumber} 
-                currency={currency} />
+                oldCurrency={oldCurrency}
+                oldAmount={oldAmount}
+                />
                 <DefaultCurrency 
-                currency={currency} 
-                changeCurrencyHandler={changeCurrencyHandler} />
+                oldCurrency={oldCurrency}
+                oldAmount={oldAmount}
+                />
             </FirstFieldSet>
             <SecondFieldSet>
-                <span style={{display: "flex", width: "max-content", margin: "auto", gap: "15px"}}>
+                <Span>
                 <Select value={oldCurrency} onChange={selectCurrency} name="old_currency">
                         {currencySymbols.map((symbol) => (
                             <Option key={symbol} value={symbol}>{symbol}</Option>
@@ -63,19 +66,22 @@ function Body({currency, swapCurrencies, changeCurrencyHandler, convertedNumber,
                             <Option key={symbol} value={symbol}>{symbol}</Option>
                         ))}
                 </Select>
-                </span>
+                </Span>
                 <SwapButton 
-                currency={currency} 
-                swapCurrencies={swapCurrencies} />
+                oldCurrency={oldCurrency}
+                newCurrency={newCurrency}
+                />
                 <DefaultResetButton />
             </SecondFieldSet>
             <ThirdFieldSet>
                 <ConvertedAmountLabel 
-                convertedNumber={convertedNumber} 
-                currency={currency} />
+                newCurrency={newCurrency}
+                newAmount={newAmount}
+                />
                 <ConvertedCurrency 
-                currency={currency} 
-                changeCurrencyHandler={changeCurrencyHandler} />
+                newCurrency={newCurrency}
+                newAmount={newAmount}
+                />
             </ThirdFieldSet>
         </FormElement>
     )

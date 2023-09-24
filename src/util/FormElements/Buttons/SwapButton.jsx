@@ -4,10 +4,10 @@ import {
     SwapCurrencyText
 } from '../../styles/BodyUtil'
 
-const SwapButton = ({currency, swapCurrencies}) => {
+const SwapButton = ({oldCurrency, newCurrency}) => {
     return (
-    <SwapCurrencyButton onClick={swapCurrencies}>
-    Swap <SwapCurrencyText>{currency.defaultType}</SwapCurrencyText>/<SwapCurrencyText>{currency.convertedType}</SwapCurrencyText>
+    <SwapCurrencyButton /*onClick={} */>
+    Swap <SwapCurrencyText>{oldCurrency}</SwapCurrencyText>/<SwapCurrencyText>{newCurrency}</SwapCurrencyText>
     </SwapCurrencyButton>
 )
     }
