@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const HomeLink = styled.nav`
     display: flex;
     flex-direction: row;
+    justify-content: center;
     color: white;
     margin-bottom: 30px;
     padding-bottom: 12px;
@@ -10,6 +11,8 @@ export const HomeLink = styled.nav`
 `
 
 export const NavContainer = styled.ul`
+    display: flex;
+    width: 800px;
     padding-top: 1rem;
     list-style: none;
     transition: all 0.3s ease;

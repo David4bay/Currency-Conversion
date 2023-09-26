@@ -13,7 +13,7 @@ const DefaultLabel = ({oldAmount = 0, oldCurrency}) => {
 
     return (
         <Label htmlFor="defaultTypeAmount">
-                    <ConvertTitle>Converted {!converted ? "from" : "to"}</ConvertTitle>
+                    <ConvertTitle>Converted <br/>{!converted ? "from" : "to"}</ConvertTitle>
                     {
                         !converted && !loading ? 
                         (   

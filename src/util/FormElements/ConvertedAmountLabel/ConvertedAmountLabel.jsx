@@ -13,7 +13,7 @@ const ConvertedAmountLabel = ({newAmount, newCurrency}) => {
 
     return (
         <ConvertedLabel htmlFor="convertedTypeAmount">
-                    <ConvertTitle>Converted {converted ? "from" : "to"}</ConvertTitle>
+                    <ConvertTitle>Converted <br/>{converted ? "from" : "to"}</ConvertTitle>
                     {
                         converted && !loading ? 
                         (   
