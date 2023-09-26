@@ -1,33 +1,33 @@
 /* eslint-disable react/prop-types */
-import { useDispatch } from "react-redux"
+import { useSelector, useDispatch } from "react-redux"
 import { CurrencyInput } from '../../styles/BodyUtil'
 import { fetchCurrency } from '../../fetchCurrency/fetchCurrency'
 import debounce from 'lodash.debounce'
 
 const DefaultCurrency = ({oldAmount, oldCurrency, newCurrency}) => {
 
+    const converted = useSelector((state) => state.payloadReducer.converted)
+
     const dispatch = useDispatch()
 
     const callForData = debounce((value) => {
 
-      dispatch(fetchCurrency(value, oldCurrency, newCurrency))
-    }, 700)
-
-    const handleConvert = () => {
-    }
+      dispatch(fetchCurrency(value, oldCurrency, newCurrency, converted))
+    }, 20)
 
     const handleInput = (e) => {
         const name = e.target.name
-        const value = e.target.value
+        const value = Number(e.target.value)
+        dispatch({type: "LOADING"})
+        dispatch({type: "UNCONVERT"})
         dispatch({type: "CHANGE", [name]: value})
-        callForData(value)
+        return callForData(value)
     }
 
     return (
         <CurrencyInput type="number" name="old_amount" id="defaultTypeAmount" 
-                value={oldAmount || ""}
+                value={converted ? "" : oldAmount || ""}
                 placeholder="0"
-                onClick={handleConvert}
                 onChange={handleInput} 
                 min={0}
                 max={999999}

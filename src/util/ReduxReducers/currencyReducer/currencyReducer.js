@@ -15,7 +15,6 @@ const initialState = {
 }
 
 const currencyReducer = (state = initialState, action) => {
-    console.log(state)
     switch(action.type) {
 
         case FOCUS:

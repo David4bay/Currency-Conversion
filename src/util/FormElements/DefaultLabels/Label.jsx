@@ -2,25 +2,42 @@
 import {
     ConvertTitle, Label,
 } from '../../styles/BodyUtil'
+import {useSelector} from "react-redux"
 
-const DefaultLabel = ({defaultInputActive, defaultState, oldAmount, oldCurrency, newCurrency, newAmount}) => {
+const DefaultLabel = ({oldAmount = 0, oldCurrency}) => {
+
+    const converted = useSelector((state) => state.payloadReducer.converted)
+    const payloadAmount = useSelector((state) => state.payloadReducer.payload_amount)
+    const payloadCurrency = useSelector((state) => state.payloadReducer.payload_currency)
+    const loading = useSelector((state) => state.payloadReducer.loading)
+
     return (
         <Label htmlFor="defaultTypeAmount">
-                    <ConvertTitle>Convert {defaultState ? "from" : "to"}</ConvertTitle>
-                    {/* {
-                            defaultInputActive === true ?
-                            newAmount.toLocaleString("en-US", {
-                            style: "currency",
-                            currency: `${newCurrency}`,
-                            minimumFractionalDigits: 2
+                    <ConvertTitle>Converted {!converted ? "from" : "to"}</ConvertTitle>
+                    {
+                        !converted && !loading ? 
+                        (   
+                                oldAmount.toLocaleString("en-US", {
+                                style: "currency",
+                                currency: `${oldCurrency}`,
+                                minimumFractionalDigits: 2
+                        }))
+                       :
+                        !converted && loading && (
+                                oldAmount.toLocaleString("en-US", {
+                                style: "currency",
+                                currency: `${oldCurrency}`,
+                                minimumFractionalDigits: 2
                         })
-                        :
-                            oldAmount.toLocaleString("en-US", {
-                            style: "currency",
-                            currency: `${oldCurrency}`,
-                            minimumFractionalDigits: 2
-                       })
-                        } */}
+                        ) ||
+                        (   
+                                payloadAmount.toLocaleString("en-US", {
+                                style: "currency",
+                                currency: `${payloadCurrency || oldCurrency}`,
+                                minimumFractionalDigits: 2
+                        })
+                        ) 
+                    }
                 </Label>
     )
 }

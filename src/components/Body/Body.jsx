@@ -31,12 +31,21 @@ import currencyNames from '../../util/CurrencyNames/currencyNames'
 function Body() {
 
     const oldCurrency = useSelector((state) => state.currencyReducer.old_currency)
+
     const oldAmount = useSelector((state) => state.currencyReducer.old_amount)
+
     const newCurrency = useSelector((state) => state.currencyReducer.new_currency)
+
     const newAmount = useSelector((state) => state.currencyReducer.new_amount)
+
     const defaultState = useSelector((state) => state.currencyReducer.default)
+
     const defaultInputActive = useSelector((state) => state.currencyReducer.defaultInputActive)
+
     const activeInput = useSelector((state) => state.currencyReducer.activeInput)
+
+    const loading = useSelector((state) => state.payloadReducer.loading)
+
     const dispatch = useDispatch()
 
     function selectCurrency(e) {
@@ -46,16 +55,14 @@ function Body() {
     }
 
     return (
+        <>
+        {loading ? <h2 style={{textAlign: "center", color: "#3afeec"}}>Loading...</h2> : ""}
         <FormElement>
                 <Legend>Swap and Compare Currency</Legend>
             <FirstFieldSet>
                 <DefaultLabel 
-                defaultInputActive={defaultInputActive}
-                defaultState={defaultState}
                 oldCurrency={oldCurrency}
-                newCurrency={newCurrency}
                 oldAmount={oldAmount}
-                newAmount={newAmount}
                 />
                 <DefaultCurrency 
                 activeInput={activeInput}
@@ -88,11 +95,8 @@ function Body() {
             </SecondFieldSet>
             <ThirdFieldSet>
                 <ConvertedAmountLabel 
-                defaultState={defaultState}
                 newCurrency={newCurrency}
-                oldCurrency={oldCurrency}
                 newAmount={newAmount}
-                oldAmount={oldAmount}
                 />
                 <ConvertedCurrency 
                 defaultInputActive={defaultInputActive}
@@ -102,6 +106,7 @@ function Body() {
                 />
             </ThirdFieldSet>
         </FormElement>
+        </>
     )
 }
 
