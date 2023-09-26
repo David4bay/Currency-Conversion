@@ -20,7 +20,7 @@ const ConvertedCurrency = ({newAmount, newCurrency, oldCurrency}) => {
         let newerCurrency = oldCurrency
         dispatch({type: "LOADING"})
         dispatch(fetchCurrency(value, olderCurrency, newerCurrency, converted))
-      }, 20)
+      }, 100)
 
     const handleInput = (e) => {
         const name = e.target.name

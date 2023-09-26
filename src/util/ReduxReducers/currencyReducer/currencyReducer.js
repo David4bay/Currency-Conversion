@@ -21,7 +21,7 @@ const currencyReducer = (state = initialState, action) => {
 
         case RESET:
         return {
-            ...state
+            ...initialState
         };
 
         case CHANGE:

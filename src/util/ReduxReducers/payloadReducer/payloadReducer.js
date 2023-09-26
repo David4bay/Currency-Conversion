@@ -1,8 +1,10 @@
 const LOADING = "LOADING"
+const SWAP = "SWAP"
 const FETCH_CONVERTED = "FETCH_CONVERTED"
 const FETCH_DEFAULT = "FETCH_DEFAULT"
-const RESOLVED = "RESOLVED"
+const RESET = "RESET"
 const CONVERT = "CONVERT"
+const RESOLVED = "RESOLVED"
 const UNCONVERT = "UNCONVERT"
 
 const initialState = {
@@ -21,6 +23,12 @@ const payloadReducer = (state = initialState, action) => {
             loading: true,
         }
 
+        case SWAP:
+        return {
+            ...state,
+            converted: !state.converted
+        }
+
         case CONVERT:
         return {
             ...state, converted: true,
@@ -30,6 +38,12 @@ const payloadReducer = (state = initialState, action) => {
         return {
             ...state, 
             converted: false,
+        }
+
+        case RESOLVED:
+        return {
+            ...state,
+            loading: false,
         }
 
         case FETCH_CONVERTED:
@@ -48,10 +62,9 @@ const payloadReducer = (state = initialState, action) => {
             payload_currency: action.currency,
         }
 
-        case RESOLVED:
+        case RESET:
         return {
-            ...state,
-            loading: false,
+            ...initialState
         }
 
         default:

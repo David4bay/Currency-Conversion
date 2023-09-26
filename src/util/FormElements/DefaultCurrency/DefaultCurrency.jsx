@@ -13,7 +13,7 @@ const DefaultCurrency = ({oldAmount, oldCurrency, newCurrency}) => {
     const callForData = debounce((value) => {
 
       dispatch(fetchCurrency(value, oldCurrency, newCurrency, converted))
-    }, 20)
+    }, 100)
 
     const handleInput = (e) => {
         const name = e.target.name
