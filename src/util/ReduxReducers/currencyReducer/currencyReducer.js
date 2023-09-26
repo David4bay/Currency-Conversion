@@ -1,36 +1,64 @@
-const READY = "READY"
+const FOCUS = "FOCUS"
 const FETCH = "FETCH"
 const RESET = "RESET"
 const CHANGE = "CHANGE"
+const SWAP = "SWAP"
+const UNFOCUS = "UNFOCUS"
 
 const initialState = {
     old_currency : "USD",
     old_amount: 0,
     new_currency: "NGN",
-    new_amount: 0
+    new_amount: 0,
+    default: true,
+    defaultInputActive: true,
 }
-
 
 const currencyReducer = (state = initialState, action) => {
     console.log(state)
     switch(action.type) {
 
-        case READY:
-        return state;
+        case FOCUS:
+        return {
+            ...state,
+            defaultInputActive: false,
+        };
+
+        case UNFOCUS:
+        return {
+            ...state,
+            defaultInputActive: true,
+        }
 
         case FETCH:
-        return state;
+        return {
+            ...state, 
+            ...action,
+        };
 
         case RESET:
-        return state;
+        return {
+            ...state
+        };
 
         case CHANGE:
-        return {...state, ...action};
+        return {
+            ...state, 
+            ...action,
+        };
+
+        case SWAP:
+        return {
+            ...state, 
+            old_currency: state.new_currency, 
+            old_amount: state.new_amount,  
+            new_currency: state.old_currency,
+            new_amount: state.old_amount,
+        }
 
         default:
         return state;
-        
     }
 }
 
-export default currencyReducer;
+export default currencyReducer
