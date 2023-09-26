@@ -32,7 +32,7 @@ const ConvertedCurrency = ({newAmount, newCurrency, oldCurrency}) => {
 
     return (
         <CurrencyInput ref={inputRef} type="number" name="new_amount" id="convertedTypeAmount"
-        value={newAmount}
+        value={!converted ? "" : newAmount || ""}
         placeholder="0"
         onChange={handleInput}
         min={0}

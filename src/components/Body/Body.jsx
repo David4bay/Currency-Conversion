@@ -65,12 +65,9 @@ function Body() {
                 oldAmount={oldAmount}
                 />
                 <DefaultCurrency 
-                activeInput={activeInput}
-                defaultState={defaultState}
                 oldCurrency={oldCurrency}
                 newCurrency={newCurrency}
                 oldAmount={oldAmount}
-                newAmount={newAmount}
                 />
             </FirstFieldSet>
             <SecondFieldSet>
@@ -87,7 +84,6 @@ function Body() {
                 </Select>
                 </Span>
                 <SwapButton 
-                defaultState={defaultState}
                 oldCurrency={oldCurrency}
                 newCurrency={newCurrency}
                 />
@@ -99,9 +95,8 @@ function Body() {
                 newAmount={newAmount}
                 />
                 <ConvertedCurrency 
-                defaultInputActive={defaultInputActive}
                 newCurrency={newCurrency}
-                oldAmount={oldAmount}
+                newAmount={newAmount}
                 oldCurrency={oldCurrency}
                 />
             </ThirdFieldSet>
