@@ -16,6 +16,7 @@ const ConvertedCurrency = ({newAmount, newCurrency, oldCurrency}) => {
     const callForData = debounce((value) => {
         let olderCurrency = newCurrency
         let newerCurrency = oldCurrency
+        dispatch({type: "LOADING"})
         dispatch(fetchCurrency(value, olderCurrency, newerCurrency))
       }, 700)
 
@@ -23,7 +24,7 @@ const ConvertedCurrency = ({newAmount, newCurrency, oldCurrency}) => {
         const name = e.target.name
         const value = Number(e.target.value)
         dispatch({type: "CHANGE", [name]: value})
-        // callForData(value)
+        callForData(value)
     }
 
     return (

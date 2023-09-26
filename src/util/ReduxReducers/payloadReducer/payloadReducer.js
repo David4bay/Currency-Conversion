@@ -1,3 +1,7 @@
+const LOADING = "LOADING"
+const FETCH_CONVERTED = "FETCH_CONVERTED"
+const FETCH_DEFAULT = "FETCH_DEFAULT"
+
 const initialState = {
     loading: null,
     payload_amount: 0,
@@ -8,13 +12,13 @@ const initialState = {
 const payloadReducer = (state = initialState, action) => {
     switch(action.type) {
 
-        case "LOADING":
+        case LOADING:
         return {
             ...state, 
             loading: true,
         }
 
-        case "FETCH_CONVERTED":
+        case FETCH_CONVERTED:
         return {
             ...state, 
             loading: false,
@@ -23,7 +27,7 @@ const payloadReducer = (state = initialState, action) => {
             payload_currency: action.currency,
         }
 
-        case "FETCH_DEFAULT":
+        case FETCH_DEFAULT:
         return {
             ...state, 
             loading: false, 
