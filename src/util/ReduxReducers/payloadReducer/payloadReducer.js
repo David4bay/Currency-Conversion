@@ -1,5 +1,4 @@
 const LOADING = "LOADING"
-const SWAP = "SWAP"
 const FETCH_CONVERTED = "FETCH_CONVERTED"
 const FETCH_DEFAULT = "FETCH_DEFAULT"
 const RESET = "RESET"
@@ -21,12 +20,6 @@ const payloadReducer = (state = initialState, action) => {
         return {
             ...state, 
             loading: true,
-        }
-
-        case SWAP:
-        return {
-            ...state,
-            converted: !state.converted
         }
 
         case CONVERT:

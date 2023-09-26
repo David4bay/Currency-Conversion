@@ -29,5 +29,4 @@ export const fetchCurrency = (value, oldCurrency, newCurrency, converted) => asy
           }
 
         }
-
 }

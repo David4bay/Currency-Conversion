@@ -4,7 +4,6 @@ import {
 } from '../../styles/BodyUtil'
 import { fetchCurrency } from '../../fetchCurrency/fetchCurrency'
 import { useSelector, useDispatch } from "react-redux"
-import { useRef } from "react"
 import debounce from 'lodash.debounce'
 
 const ConvertedCurrency = ({newAmount, newCurrency, oldCurrency}) => {
@@ -13,14 +12,12 @@ const ConvertedCurrency = ({newAmount, newCurrency, oldCurrency}) => {
 
     const dispatch = useDispatch()
 
-    const inputRef = useRef(null)
-
     const callForData = debounce((value) => {
         let olderCurrency = newCurrency
         let newerCurrency = oldCurrency
         dispatch({type: "LOADING"})
         dispatch(fetchCurrency(value, olderCurrency, newerCurrency, converted))
-      }, 100)
+      }, 270)
 
     const handleInput = (e) => {
         const name = e.target.name
@@ -31,7 +28,7 @@ const ConvertedCurrency = ({newAmount, newCurrency, oldCurrency}) => {
     }
 
     return (
-        <CurrencyInput ref={inputRef} type="number" name="new_amount" id="convertedTypeAmount"
+        <CurrencyInput type="number" name="new_amount" id="convertedTypeAmount"
         value={!converted ? "" : newAmount || ""}
         placeholder="0"
         onChange={handleInput}

@@ -24,13 +24,14 @@ const ConvertedAmountLabel = ({newAmount, newCurrency}) => {
                         })
                         ) 
                            : 
-                        !converted && !loading && (   
+                        !converted && !loading ? (   
                                 payloadAmount.toLocaleString("en-US", {
                                 style: "currency",
                                 currency: `${payloadCurrency || newCurrency}`,
                                 minimumFractionalDigits: 2
                         })
-                        ) || (   
+                        ) :
+                         (   
                             newAmount.toLocaleString("en-US", {
                             style: "currency",
                             currency: `${newCurrency}`,

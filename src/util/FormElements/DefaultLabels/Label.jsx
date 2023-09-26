@@ -23,13 +23,13 @@ const DefaultLabel = ({oldAmount = 0, oldCurrency}) => {
                                 minimumFractionalDigits: 2
                         }))
                        :
-                        !converted && loading && (
+                        !converted && loading ? (
                                 oldAmount.toLocaleString("en-US", {
                                 style: "currency",
                                 currency: `${oldCurrency}`,
                                 minimumFractionalDigits: 2
                         })
-                        ) ||
+                        ) :
                         (   
                                 payloadAmount.toLocaleString("en-US", {
                                 style: "currency",
