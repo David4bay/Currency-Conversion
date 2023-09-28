@@ -42,17 +42,15 @@ const payloadReducer = (state = initialState, action) => {
         case FETCH_CONVERTED:
         return {
             ...state, 
+            ...action.payload,
             converted: true, 
-            payload_amount: action.amount, 
-            payload_currency: action.currency,
         }
 
         case FETCH_DEFAULT:
         return {
             ...state, 
+            ...action.payload,
             converted: false,
-            payload_amount: action.amount, 
-            payload_currency: action.currency,
         }
 
         case RESET:

@@ -27,7 +27,7 @@ const currencyReducer = (state = initialState, action) => {
         case CHANGE:
         return {
             ...state, 
-            ...action,
+            ...action.payload,
         };
 
         case SWAP:
