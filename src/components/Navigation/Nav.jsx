@@ -15,7 +15,7 @@ function Nav() {
         <HomeLink>
             <NavContainer>
             <Icon>
-            <FontAwesomeIcon icon={faHouse} /><IconText><a href="/">Home</a></IconText>
+            <FontAwesomeIcon icon={faHouse} /><IconText><a style={{textDecoration: "none", color: "#ffffff"}} href="/">Home</a></IconText>
             </Icon>
             </NavContainer>
         </HomeLink>
