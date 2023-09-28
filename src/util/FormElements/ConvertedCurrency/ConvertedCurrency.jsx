@@ -12,19 +12,19 @@ const ConvertedCurrency = ({newAmount, newCurrency, oldCurrency}) => {
 
     const dispatch = useDispatch()
 
-    const callForData = (value) => {
+    const callForData = async (value) => {
         let olderCurrency = newCurrency
         let newerCurrency = oldCurrency
         dispatch({type: "LOADING"})
-        dispatch(fetchCurrency(value, olderCurrency, newerCurrency, converted))
+        dispatch(await fetchCurrency(value, olderCurrency, newerCurrency, converted))
       }
 
-    const handleInput = (e) => {
+    const handleInput = async (e) => {
         const name = e.target.name
         const value = Number(e.target.value)
         dispatch({type: "CONVERT"})
         dispatch({type: "CHANGE", payload:{[name]: value}})
-        callForData(value)
+        await callForData(value)
     }
 
     return (
