@@ -9,8 +9,6 @@ export const fetchCurrency = async (value, oldCurrency, newCurrency, converted) 
 
         const response = await data.json()
 
-        console.log(response)
-
         if (response) {
           await dispatch({type: "RESOLVED"})
           switch(converted) {
