@@ -1,37 +1,42 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import {
     CurrencyInput,
 } from '../../styles/BodyUtil'
 import { fetchCurrency } from '../../fetchCurrency/fetchCurrency'
-import { useSelector, useDispatch } from "react-redux"
+import { useDispatch } from "react-redux"
 // import throttle from 'lodash.throttle'
 
 const ConvertedCurrency = ({newAmount, newCurrency, oldCurrency}) => {
-
-    const converted = useSelector((state) => state.payloadReducer.converted)
-
+    
     const dispatch = useDispatch()
 
-    const callForData = async (value) => {
+    const handleNewCall = async (value) => async dispatch => {
         let olderCurrency = newCurrency
         let newerCurrency = oldCurrency
-        dispatch({type: "LOADING"})
-        dispatch(await fetchCurrency(value, olderCurrency, newerCurrency, converted))
+        let newActive
+        let oldActive
+        dispatch(await fetchCurrency(value, olderCurrency, newerCurrency, newActive = true, oldActive = false))
+    }
+
+    const callForData = async (value) => {
+        dispatch({ type: "LOADING_FROM_NEW" })
+        dispatch({ type: "OLD_INACTIVE" })
+        dispatch(await handleNewCall(value))
       }
 
-    const handleInput = async (e) => {
+    const handleNewCurrencyInput = async (e) => {
         const name = e.target.name
         const value = Number(e.target.value)
-        dispatch({type: "CONVERT"})
-        dispatch({type: "CHANGE", payload:{[name]: value}})
+        dispatch({type: "CHANGE_NEW", payload:{[name]: value}})
         await callForData(value)
     }
 
     return (
         <CurrencyInput type="number" name="new_amount" id="convertedTypeAmount"
-        value={!converted ? "" : newAmount || ""}
+        value={newAmount || ""}
         placeholder="0"
-        onChange={handleInput}
+        onChange={handleNewCurrencyInput}
         min={0}
         max={999999}
         step={0.5}

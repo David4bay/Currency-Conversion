@@ -47,6 +47,7 @@ export const HeadingText = styled.span`
     filter: drop-shadow(0px 0px 15px lightblue);
     box-shadow: 0px 0px 15px 5px #fff;
     transition: letter-spacing 0.4s ease-in-out;
+    perspective: 1000px;
 
     &:hover {
         cursor: pointer;

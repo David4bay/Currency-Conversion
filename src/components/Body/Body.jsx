@@ -1,5 +1,7 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
+import { useEffect, useState } from "react"
+
 import {
     FormElement,
     Legend,
@@ -10,53 +12,63 @@ import {
     Option,
     Span,
 } from '../../util/styles/BodyUtil'
+
 import { useSelector, useDispatch } from "react-redux"
 
 import DefaultResetButton from 
 '../../util/FormElements/Buttons/DefaultResetButton'
+
 import SwapButton from 
 '../../util/FormElements/Buttons/SwapButton'
+
 import ConvertedAmountLabel from 
 '../../util/FormElements/ConvertedAmountLabel/ConvertedAmountLabel'
+
 import DefaultCurrency from 
 '../../util/FormElements/DefaultCurrency/DefaultCurrency'
+
 import DefaultLabel from 
 '../../util/FormElements/DefaultLabels/Label'
+
 import ConvertedCurrency from 
 '../../util/FormElements/ConvertedCurrency/ConvertedCurrency'
+
 import currencySymbols from 
 '../../util/CurrencySymbols/currencySymbols'
+
 import currencyNames from '../../util/CurrencyNames/currencyNames'
 
 function Body() {
 
-    const oldCurrency = useSelector((state) => state.currencyReducer.old_currency)
-
-    const oldAmount = useSelector((state) => state.currencyReducer.old_amount)
-
-    const newCurrency = useSelector((state) => state.currencyReducer.new_currency)
-
-    const newAmount = useSelector((state) => state.currencyReducer.new_amount)
-
-    const defaultState = useSelector((state) => state.currencyReducer.default)
-
-    const defaultInputActive = useSelector((state) => state.currencyReducer.defaultInputActive)
-
-    const activeInput = useSelector((state) => state.currencyReducer.activeInput)
-
-    const loading = useSelector((state) => state.payloadReducer.loading)
-
     const dispatch = useDispatch()
+    
+    const oldCurrency = useSelector((state) => state.oldCurrencyReducer.old_currency)
 
-    function selectCurrency(e) {
+    const oldAmount = useSelector((state) => state.oldCurrencyReducer.old_amount)
+
+    const newCurrency = useSelector((state) => state.newCurrencyReducer.new_currency)
+
+    const newAmount = useSelector((state) => state.newCurrencyReducer.new_amount)
+
+    const loadingFromOld = useSelector((state) => state.oldCurrencyReducer.old_loading)
+
+    const loadingFromNew = useSelector((state) => state.newCurrencyReducer.new_loading)
+    
+    function selectOldCurrency(e) {
         const value = e.target.value
         const name = e.target.name
-        dispatch({ type: "CHANGE", [name]: value})
+        dispatch({ type: "CHANGE_OLD", payload: { [name]: value } })
+    }
+
+    function selectNewCurrency(e) {
+        const value = e.target.value
+        const name = e.target.name
+        dispatch({ type: "CHANGE_NEW", payload: { [name]: value } })
     }
 
     return (
         <>
-        {loading ? <h2 style={{textAlign: "center", color: "#3afeec"}}>Loading...</h2> : ""}
+        {loadingFromOld || loadingFromNew ? <h2 style={{textAlign: "center", color: "#3afeec"}}>Loading...</h2> : ""}
         <FormElement>
                 <Legend>Swap and Compare Currency</Legend>
             <FirstFieldSet>
@@ -72,12 +84,12 @@ function Body() {
             </FirstFieldSet>
             <SecondFieldSet>
                 <Span>
-                <Select value={oldCurrency} onChange={selectCurrency} name="old_currency">
+                <Select value={oldCurrency} onChange={selectOldCurrency} name="old_currency">
                         {currencySymbols.map((symbol, idx) => (
                             <Option key={symbol} title={currencyNames[idx]} value={symbol}>{symbol}</Option>
                         ))}
                 </Select>
-                <Select value={newCurrency} onChange={selectCurrency} name="new_currency">
+                <Select value={newCurrency} onChange={selectNewCurrency} name="new_currency">
                         {currencySymbols.map((symbol, idx) => (
                             <Option key={symbol} title={currencyNames[idx]} value={symbol}>{symbol}</Option>
                         ))}
@@ -85,6 +97,10 @@ function Body() {
                 </Span>
                 <SwapButton 
                 oldCurrency={oldCurrency}
+                oldAmount={oldAmount}
+                newAmount={newAmount}
+                loadingFromOld={loadingFromOld}
+                loadingFromNew={loadingFromNew}
                 newCurrency={newCurrency}
                 />
                 <DefaultResetButton />
