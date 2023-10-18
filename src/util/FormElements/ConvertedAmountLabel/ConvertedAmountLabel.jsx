@@ -15,7 +15,7 @@ const ConvertedAmountLabel = ({newAmount, newCurrency}) => {
         <ConvertedLabel htmlFor="convertedTypeAmount">
                     <ConvertTitle>Converted <br/>{!oldLoading && oldPayloadActive ? "from" : "to"}</ConvertTitle>
                     {                        
-                        !oldLoading && !oldPayloadActive ? 
+                        !oldLoading && oldPayloadActive ? 
                         (   
                                 newAmount.toLocaleString("en-US", {
                                 style: "currency",
