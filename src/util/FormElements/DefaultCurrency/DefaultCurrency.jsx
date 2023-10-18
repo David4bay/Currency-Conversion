@@ -2,27 +2,26 @@
 /* eslint-disable react/prop-types */
 import { useDispatch } from "react-redux"
 import { CurrencyInput } from '../../styles/BodyUtil'
-
 import { fetchCurrency } from '../../fetchCurrency/fetchCurrency'
 
-// import throttle from "lodash.throttle"
+import debounce from "lodash.debounce"
 
 const DefaultCurrency = ({oldAmount, oldCurrency, newCurrency}) => {
 
     const dispatch = useDispatch()
 
-    const handleOldCall = async (value) => async dispatch => {
+    const handleOldCall = (value) => async dispatch => {
         let olderCurrency = oldCurrency
         let newerCurrency = newCurrency
         let newActive
         let oldActive
-        dispatch(await fetchCurrency(value, olderCurrency, newerCurrency, newActive = false, oldActive = true))
+        debounce((await dispatch(await fetchCurrency(value, olderCurrency, newerCurrency, newActive = false, oldActive = true))), 700)
     }
 
     const callForData = async (value) => {
         dispatch({ type: "LOADING_FROM_OLD" })
         dispatch({ type: "NEW_INACTIVE" })
-        dispatch(await handleOldCall(value))
+        dispatch(handleOldCall(value))
     }
     
     const handleOldCurrencyInput = async (e) => {

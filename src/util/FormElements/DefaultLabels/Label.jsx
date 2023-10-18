@@ -26,7 +26,7 @@ const DefaultLabel = ({oldAmount = 0, oldCurrency}) => {
 
                         :
 
-                       newLoading && newPayloadActive ?
+                       !newLoading && newPayloadActive ?
                        (
                                 payloadAmount.toLocaleString("en-US", {
                                 style: "currency",
