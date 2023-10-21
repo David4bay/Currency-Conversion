@@ -16,7 +16,7 @@ const ConvertedCurrency = ({newAmount, newCurrency, oldCurrency}) => {
         let newerCurrency = oldCurrency
         let newActive
         let oldActive
-        return debounce((dispatch(fetchCurrency(value, olderCurrency, newerCurrency, newActive = true, oldActive = false))), 900, { leading:false, trailing:true })
+        return debounce((dispatch(fetchCurrency(value, olderCurrency, newerCurrency, newActive = true, oldActive = false))), 900, {leading:false, trailing:true})
     }
 
     const callForData = (value) => {
