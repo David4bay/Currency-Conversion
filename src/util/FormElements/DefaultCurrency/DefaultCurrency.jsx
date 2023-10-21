@@ -10,25 +10,29 @@ const DefaultCurrency = ({oldAmount, oldCurrency, newCurrency}) => {
 
     const dispatch = useDispatch()
 
-    const handleOldCall = (value) => async dispatch => {
+    const handleOldCall = (value) => {
         let olderCurrency = oldCurrency
         let newerCurrency = newCurrency
         let newActive
         let oldActive
-        debounce((await dispatch(await fetchCurrency(value, olderCurrency, newerCurrency, newActive = false, oldActive = true))), 700)
+        try {
+            return dispatch(debounce(fetchCurrency(value, olderCurrency, newerCurrency, newActive = false, oldActive = true)), 900, { leading: false, trailing: true })
+        } catch(err) {
+            console.clear(err)
+        }
     }
 
-    const callForData = async (value) => {
+    const callForData = (value) => {
         dispatch({ type: "LOADING_FROM_OLD" })
         dispatch({ type: "NEW_INACTIVE" })
-        dispatch(handleOldCall(value))
+        return handleOldCall(value)
     }
     
-    const handleOldCurrencyInput = async (e) => {
+    const handleOldCurrencyInput = (e) => {
         const name = e.target.name
         const value = Number(e.target.value)
         dispatch({type: "CHANGE_OLD", payload:{[name]: value}})
-        await callForData(value)
+        return callForData(value)
     }
 
     return (

@@ -5,31 +5,31 @@ import {
 } from '../../styles/BodyUtil'
 import { fetchCurrency } from '../../fetchCurrency/fetchCurrency'
 import { useDispatch } from "react-redux"
-// import throttle from 'lodash.throttle'
+import debounce from 'lodash.debounce'
 
 const ConvertedCurrency = ({newAmount, newCurrency, oldCurrency}) => {
     
     const dispatch = useDispatch()
 
-    const handleNewCall = (value) => async dispatch => {
+    const handleNewCall = (value) => {
         let olderCurrency = newCurrency
         let newerCurrency = oldCurrency
         let newActive
         let oldActive
-        dispatch(await fetchCurrency(value, olderCurrency, newerCurrency, newActive = true, oldActive = false))
+        return debounce((dispatch(fetchCurrency(value, olderCurrency, newerCurrency, newActive = true, oldActive = false))), 900, { leading:false, trailing:true })
     }
 
-    const callForData = async (value) => {
+    const callForData = (value) => {
         dispatch({ type: "LOADING_FROM_NEW" })
         dispatch({ type: "OLD_INACTIVE" })
-        dispatch(handleNewCall(value))
+        return handleNewCall(value)
       }
 
-    const handleNewCurrencyInput = async (e) => {
+    const handleNewCurrencyInput = (e) => {
         const name = e.target.name
         const value = Number(e.target.value)
         dispatch({type: "CHANGE_NEW", payload:{[name]: value}})
-        callForData(value)
+        return callForData(value)
     }
 
     return (

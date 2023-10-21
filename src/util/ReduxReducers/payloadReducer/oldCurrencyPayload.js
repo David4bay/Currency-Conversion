@@ -20,7 +20,7 @@ const oldCurrencyPayload = (state = initialState, action) => {
 
         case RESULT_OLD:
         return {
-            ...state, ...action.payload, old_converted: true
+            ...state, ...action.payload
         }
 
         case OLD_INACTIVE:
