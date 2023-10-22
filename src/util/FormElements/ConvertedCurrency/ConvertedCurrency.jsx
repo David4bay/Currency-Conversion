@@ -21,7 +21,7 @@ const ConvertedCurrency = ({newAmount, newCurrency, oldCurrency}) => {
         let newActive
         let oldActive
         dispatch(fetchCurrency(value, olderCurrency, newerCurrency, newActive = true, oldActive = false))
-    }, 900, { leading: false, trailing: true})
+    }, 1800, { leading: false, trailing: true, maxWait: 4000 })
     
     const handleNewCurrencyInput = useCallback((e) => {
         const name = e.target.name
