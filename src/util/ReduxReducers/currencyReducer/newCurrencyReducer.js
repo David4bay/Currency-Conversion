@@ -24,7 +24,7 @@ const newCurrencyReducer = (state = initialState, action) => {
 
         case RESET:
         return {
-            ...initialState,
+            ...initialState
         }
 
         case LOADING_FROM_NEW:
@@ -53,7 +53,7 @@ const newCurrencyReducer = (state = initialState, action) => {
 
         case CLEAR_NEW_AMOUNT:
         return {
-            ...state, new_amount: ""
+            ...state, new_amount: state.new_amount
         }
 
         default:

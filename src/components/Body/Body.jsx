@@ -78,7 +78,7 @@ function Body() {
 
     return (
         <>
-        {swapRef.current && loadingFromOld || swapRef.current === true && loadingFromNew ? <h2 style={{textAlign: "center", color: "#3afeec"}}>Loading...</h2> : ""}
+        {swapRef.current === true && loadingFromOld || swapRef.current === true && loadingFromNew ? <h2 style={{textAlign: "center", color: "#3afeec"}}>Loading...</h2> : ""}
         <FormElement>
                 <Legend>Swap and Compare Currency</Legend>
             <FirstFieldSet>

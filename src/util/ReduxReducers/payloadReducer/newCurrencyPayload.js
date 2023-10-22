@@ -3,6 +3,7 @@ const NEW_ACTIVE = "NEW_ACTIVE"
 const RESULT_NEW = "RESULT_NEW"
 const NEW_INACTIVE = "NEW_INACTIVE"
 const DONE_NEW = "DONE_NEW"
+const RESET = "RESET"
 
 const initialState = {
     currency_payload: 0,
@@ -18,6 +19,11 @@ const newCurrencyPayload = (state = initialState, action) => {
         return {
             ...state, 
             ...action.payload,
+        }
+
+        case RESET:
+        return {
+            ...state, currency_payload: 0
         }
 
         case NEW_ACTIVE:
