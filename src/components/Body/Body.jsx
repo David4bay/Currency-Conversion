@@ -43,6 +43,10 @@ function Body() {
     const dispatch = useDispatch()
 
     const swapRef = useRef(true)
+
+    const convertedInputRef = useRef(null)
+
+    const defaultInputRef = useRef(null)
     
     const oldCurrency = useSelector((state) => state.oldCurrencyReducer.old_currency)
 
@@ -84,6 +88,8 @@ function Body() {
                 />
                 <DefaultCurrency 
                 swapRef={swapRef}
+                defaultInputRef={defaultInputRef}
+                convertedInputRef={convertedInputRef}
                 oldCurrency={oldCurrency}
                 newCurrency={newCurrency}
                 oldAmount={oldAmount}
@@ -122,6 +128,8 @@ function Body() {
                 />
                 <ConvertedCurrency 
                 swapRef={swapRef}
+                defaultInputRef={defaultInputRef}
+                convertedInputRef={convertedInputRef}
                 newCurrency={newCurrency}
                 newAmount={newAmount}
                 oldCurrency={oldCurrency}

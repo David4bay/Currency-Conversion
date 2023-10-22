@@ -4,6 +4,7 @@ const RESET = "RESET"
 const CHANGE_NEW = "CHANGE_NEW"
 const DONE_NEW = "DONE_NEW"
 const SWAP_NEW = "SWAP_NEW"
+const CLEAR_NEW_AMOUNT = "CLEAR_NEW_AMOUNT"
 
 const initialState = {
     new_currency : "NGN",
@@ -48,6 +49,11 @@ const newCurrencyReducer = (state = initialState, action) => {
         return {
             ...state, 
             ...action.payload
+        }
+
+        case CLEAR_NEW_AMOUNT:
+        return {
+            ...state, new_amount: ""
         }
 
         default:

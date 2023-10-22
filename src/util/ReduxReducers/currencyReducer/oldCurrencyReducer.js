@@ -4,6 +4,7 @@ const RESET = "RESET"
 const CHANGE_OLD = "CHANGE_OLD"
 const DONE_OLD = "DONE_OLD"
 const SWAP_OLD = "SWAP_OLD"
+const CLEAR_OLD_AMOUNT = "CLEAR_OLD_AMOUNT"
 
 const initialState = {
     old_currency : "USD",
@@ -48,6 +49,12 @@ const oldCurrencyReducer = (state = initialState, action) => {
         return {
             ...state, 
             ...action.payload
+        }
+
+        case CLEAR_OLD_AMOUNT:
+        return {
+            ...state,
+            old_amount: ""
         }
 
         default:
