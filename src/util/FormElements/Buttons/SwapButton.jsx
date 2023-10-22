@@ -19,12 +19,12 @@ const SwapButton = ({
         dispatch({type: "SWAP_OLD", payload: {
             old_currency: newCurrency,
             old_amount: newAmount,
-            old_loading: loadingFromNew
+            old_loading: !loadingFromNew
         }})
         dispatch({type: "SWAP_NEW", payload: {
             new_currency: oldCurrency,
             new_amount: oldAmount,
-            new_loading: loadingFromOld
+            new_loading: !loadingFromOld
         }})
     }
 
