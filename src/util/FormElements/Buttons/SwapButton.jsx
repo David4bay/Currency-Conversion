@@ -11,11 +11,13 @@ const SwapButton = ({
     oldAmount,
     newAmount,
     loadingFromOld,
-    loadingFromNew}) => {
+    loadingFromNew, 
+    swapRef}) => {
 
     const dispatch = useDispatch()
 
     const swapCurrency = () => {
+        swapRef.current = false
         dispatch({type: "SWAP_OLD", payload: {
             old_currency: newCurrency,
             old_amount: newAmount,

@@ -6,7 +6,7 @@ import { fetchCurrency } from '../../fetchCurrency/fetchCurrency'
 import { useCallback, useRef } from 'react'
 import debounce from "lodash.debounce"
 
-const DefaultCurrency = ({oldAmount, oldCurrency, newCurrency}) => {
+const DefaultCurrency = ({oldAmount, oldCurrency, newCurrency, swapRef}) => {
 
     const inputRef = useRef(null)
 
@@ -22,13 +22,14 @@ const DefaultCurrency = ({oldAmount, oldCurrency, newCurrency}) => {
     }, 1800, { leading: false, trailing: true, maxWait: 4000 })
 
     const handleOldCurrencyInput = useCallback((e) => {
+        swapRef.current = true
         const name = e.target.name
         const value = Number(e.target.value)
         dispatch({type: "CHANGE_OLD", payload:{[name]: value}})
         dispatch({ type: "LOADING_FROM_OLD" })
         dispatch({ type: "NEW_INACTIVE" })
         debouncedCall()
-    }, [debouncedCall, dispatch])
+    }, [debouncedCall, dispatch, swapRef])
 
     return (
         <CurrencyInput ref={inputRef} type="number" name="old_amount" id="defaultTypeAmount" 

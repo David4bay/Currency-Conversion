@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
-import { useEffect, useState } from "react"
+import { useEffect, useState, useRef } from "react"
 
 import {
     FormElement,
@@ -41,6 +41,8 @@ import currencyNames from '../../util/CurrencyNames/currencyNames'
 function Body() {
 
     const dispatch = useDispatch()
+
+    const swapRef = useRef(true)
     
     const oldCurrency = useSelector((state) => state.oldCurrencyReducer.old_currency)
 
@@ -53,6 +55,10 @@ function Body() {
     const loadingFromOld = useSelector((state) => state.oldCurrencyReducer.old_loading)
 
     const loadingFromNew = useSelector((state) => state.newCurrencyReducer.new_loading)
+
+    const newActive = useSelector((state) => state.newCurrencyPayload.new_active)
+    
+    const oldActive = useSelector((state) => state.oldCurrencyPayload.old_active)
     
     function selectOldCurrency(e) {
         const value = e.target.value
@@ -68,7 +74,7 @@ function Body() {
 
     return (
         <>
-        {loadingFromOld || loadingFromNew ? <h2 style={{textAlign: "center", color: "#3afeec"}}>Loading...</h2> : ""}
+        {swapRef.current && loadingFromOld || swapRef.current === true && loadingFromNew ? <h2 style={{textAlign: "center", color: "#3afeec"}}>Loading...</h2> : ""}
         <FormElement>
                 <Legend>Swap and Compare Currency</Legend>
             <FirstFieldSet>
@@ -77,6 +83,7 @@ function Body() {
                 oldAmount={oldAmount}
                 />
                 <DefaultCurrency 
+                swapRef={swapRef}
                 oldCurrency={oldCurrency}
                 newCurrency={newCurrency}
                 oldAmount={oldAmount}
@@ -95,7 +102,8 @@ function Body() {
                         ))}
                 </Select>
                 </Span>
-                <SwapButton 
+                <SwapButton
+                swapRef={swapRef} 
                 oldCurrency={oldCurrency}
                 oldAmount={oldAmount}
                 newAmount={newAmount}
@@ -103,7 +111,9 @@ function Body() {
                 loadingFromNew={loadingFromNew}
                 newCurrency={newCurrency}
                 />
-                <DefaultResetButton />
+                <DefaultResetButton 
+                swapRef={swapRef}
+                />
             </SecondFieldSet>
             <ThirdFieldSet>
                 <ConvertedAmountLabel 
@@ -111,6 +121,7 @@ function Body() {
                 newAmount={newAmount}
                 />
                 <ConvertedCurrency 
+                swapRef={swapRef}
                 newCurrency={newCurrency}
                 newAmount={newAmount}
                 oldCurrency={oldCurrency}

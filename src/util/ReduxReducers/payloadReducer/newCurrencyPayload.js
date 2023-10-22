@@ -16,7 +16,8 @@ const newCurrencyPayload = (state = initialState, action) => {
 
         case FETCH_NEW:
         return {
-            ...state, ...action.payload,
+            ...state, 
+            ...action.payload,
         }
 
         case NEW_ACTIVE:

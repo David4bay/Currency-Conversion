@@ -28,7 +28,8 @@ const oldCurrencyReducer = (state = initialState, action) => {
 
         case LOADING_FROM_OLD:
         return {
-            ...state, old_loading: true
+            ...state, 
+            old_loading: true
         }
 
         case CHANGE_OLD:
@@ -39,12 +40,14 @@ const oldCurrencyReducer = (state = initialState, action) => {
 
         case DONE_OLD:
         return {
-            ...state, old_loading: false
+            ...state, 
+            old_loading: false
         }
 
         case SWAP_OLD:
         return {
-            ...state, ...action.payload
+            ...state, 
+            ...action.payload
         }
 
         default:
