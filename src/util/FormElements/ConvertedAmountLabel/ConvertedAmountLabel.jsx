@@ -9,13 +9,13 @@ const ConvertedAmountLabel = ({newAmount, newCurrency}) => {
     const payloadCurrencySymbol = useSelector((state) => state.oldCurrencyPayload.old_currencySymbol_payload)
     const payloadAmount = useSelector((state) => state.oldCurrencyPayload.currency_payload)
     const oldPayloadActive = useSelector((state) => state.oldCurrencyPayload.old_active)
-    const oldLoading = useSelector((state) => state.oldCurrencyReducer.old_loading)
+    const newPayloadActive = useSelector((state) => state.newCurrencyPayload.new_active)
 
     return (
         <ConvertedLabel htmlFor="convertedTypeAmount">
-                    <ConvertTitle>Converted <br/>{!oldLoading && !oldPayloadActive ? "from" : "to"}</ConvertTitle>
+                    <ConvertTitle>Converted <br/>{!oldPayloadActive && newPayloadActive ? "from" : "to"}</ConvertTitle>
                     {                        
-                        oldLoading && oldPayloadActive ? 
+                        !oldPayloadActive && newPayloadActive ? 
                         (   
                                 newAmount.toLocaleString("en-US", {
                                 style: "currency",
@@ -24,20 +24,12 @@ const ConvertedAmountLabel = ({newAmount, newCurrency}) => {
                         })
                         ) 
                            : 
-                                !oldLoading && oldPayloadActive ? 
                         (   
                                 payloadAmount.toLocaleString("en-US", {
                                 style: "currency",
                                 currency: `${newCurrency || payloadCurrencySymbol}`,
                                 minimumFractionalDigits: 2
-                        })
-                        ) :
-                        (   
-                            newAmount.toLocaleString("en-US", {
-                            style: "currency",
-                            currency: `${newCurrency}`,
-                            minimumFractionalDigits: 2    
-                    })
+                            })
                         )
                     }
         </ConvertedLabel>

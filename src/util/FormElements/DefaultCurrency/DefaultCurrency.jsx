@@ -3,40 +3,35 @@
 import { useDispatch } from "react-redux"
 import { CurrencyInput } from '../../styles/BodyUtil'
 import { fetchCurrency } from '../../fetchCurrency/fetchCurrency'
-
+import { useCallback, useRef } from 'react'
 import debounce from "lodash.debounce"
 
 const DefaultCurrency = ({oldAmount, oldCurrency, newCurrency}) => {
 
+    const inputRef = useRef(null)
+
     const dispatch = useDispatch()
 
-    const handleOldCall = (value) => {
+    const debouncedCall = debounce(() => {
         let olderCurrency = oldCurrency
         let newerCurrency = newCurrency
+        let value = inputRef.current.value || 0
         let newActive
         let oldActive
-        try {
-            return dispatch(debounce(fetchCurrency(value, olderCurrency, newerCurrency, newActive = false, oldActive = true)), 900, { leading: false, trailing: true })
-        } catch(err) {
-            console.clear(err)
-        }
-    }
+        return dispatch(fetchCurrency(value, olderCurrency, newerCurrency, newActive = false, oldActive = true))
+    }, 900, { leading: false, trailing: true })
 
-    const callForData = (value) => {
-        dispatch({ type: "LOADING_FROM_OLD" })
-        dispatch({ type: "NEW_INACTIVE" })
-        return handleOldCall(value)
-    }
-    
-    const handleOldCurrencyInput = (e) => {
+    const handleOldCurrencyInput = useCallback((e) => {
         const name = e.target.name
         const value = Number(e.target.value)
         dispatch({type: "CHANGE_OLD", payload:{[name]: value}})
-        return callForData(value)
-    }
+        dispatch({ type: "LOADING_FROM_OLD" })
+        dispatch({ type: "NEW_INACTIVE" })
+        debouncedCall()
+    }, [debouncedCall, dispatch])
 
     return (
-        <CurrencyInput type="number" name="old_amount" id="defaultTypeAmount" 
+        <CurrencyInput ref={inputRef} type="number" name="old_amount" id="defaultTypeAmount" 
                 value={oldAmount || ""}
                 placeholder="0"
                 onChange={handleOldCurrencyInput} 

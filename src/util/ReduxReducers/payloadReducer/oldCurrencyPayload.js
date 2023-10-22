@@ -25,7 +25,7 @@ const oldCurrencyPayload = (state = initialState, action) => {
 
         case OLD_INACTIVE:
         return {
-            ...state
+            ...state, old_active: false,
         }
 
         case DONE_OLD:

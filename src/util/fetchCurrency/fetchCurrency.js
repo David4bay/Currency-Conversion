@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-export const fetchCurrency = async (value, oldCurrency, newCurrency, newActive, oldActive) => async dispatch => {
+export const fetchCurrency = (value, oldCurrency, newCurrency, newActive, oldActive) => async dispatch => {
 
 try {
   const data = await axios.get(`https://api.api-ninjas.com/v1/convertcurrency?want=${newCurrency}&have=${oldCurrency}&amount=${value}`, {
@@ -15,7 +15,7 @@ try {
     console.log(response, newActive, oldActive)
 
     if (response && newActive) { 
-      await dispatch(
+       dispatch(
         {
           type: "RESULT_NEW",
           payload: {
@@ -23,11 +23,11 @@ try {
           new_currencySymbol_payload: response.new_currency
         }
       })
-      return await dispatch({type: "DONE_NEW"})
+       dispatch({type: "DONE_NEW"})
     }
 
       if (response && oldActive) {
-        await dispatch(
+         dispatch(
           {
             type: "RESULT_OLD",
             payload: {
@@ -35,7 +35,7 @@ try {
             old_currencySymbol_payload: response.new_currency
           }
         })
-        return await dispatch({type: "DONE_OLD"})
+         dispatch({type: "DONE_OLD"})
     }
 
 } catch(err) {

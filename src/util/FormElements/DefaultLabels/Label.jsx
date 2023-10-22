@@ -9,13 +9,13 @@ const DefaultLabel = ({oldAmount = 0, oldCurrency}) => {
     const payloadCurrencySymbol = useSelector((state) => state.newCurrencyPayload.new_currencySymbol_payload)
     const payloadAmount = useSelector((state) => state.newCurrencyPayload.currency_payload)
     const newPayloadActive = useSelector((state) => state.newCurrencyPayload.new_active)
-    const newLoading = useSelector((state) => state.newCurrencyReducer.new_loading)
+    const oldPayloadActive = useSelector((state) => state.oldCurrencyPayload.old_active)
 
     return (
         <Label htmlFor="defaultTypeAmount">
-                    <ConvertTitle>Converted <br/>{!newLoading || !newPayloadActive ? "from" : "to"}</ConvertTitle>
+                    <ConvertTitle>Converted <br/>{!newPayloadActive ? "from" : "to"}</ConvertTitle>
                     {
-                        !newLoading && !newPayloadActive ? 
+                        oldPayloadActive && !newPayloadActive ? 
                         (   
                                 oldAmount.toLocaleString("en-US", {
                                 style: "currency",
@@ -26,21 +26,13 @@ const DefaultLabel = ({oldAmount = 0, oldCurrency}) => {
 
                         :
 
-                       !newLoading && newPayloadActive ?
                        (
                                 payloadAmount.toLocaleString("en-US", {
                                 style: "currency",
-                                currency: `${payloadCurrencySymbol}`,
+                                currency: `${oldCurrency || payloadCurrencySymbol}`,
                                 minimumFractionalDigits: 2
-                                }))
-                        :
-
-                        (   
-                            oldAmount.toLocaleString("en-US", {
-                            style: "currency",
-                            currency: `${oldCurrency}`,
-                            minimumFractionalDigits: 2
-                    }))
+                            })
+                        )
                     }
                 </Label>
     )
