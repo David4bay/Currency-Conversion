@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
-import RateBody from './rateComponents/rateBody/RateBody.jsx'
+import RateBody from './components/RateBody/RateBody.jsx'
 import ErrorBoundary from './ErrorBoundary.jsx'
 import './index.css'
 import {legacy_createStore, applyMiddleware, compose, combineReducers} from "redux"

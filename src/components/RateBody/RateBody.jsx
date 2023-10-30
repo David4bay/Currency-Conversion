@@ -1,11 +1,11 @@
-import Footer from "../../components/Footer/Footer"
-import Nav from "../../components/Navigation/Nav"
+import Footer from "../Footer/Footer"
+import Nav from "../Navigation/Nav"
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js'
 import { Pie } from 'react-chartjs-2'
 import { useSelector, useDispatch } from 'react-redux'
 import { useEffect, useState } from 'react'
 import currencyNames from '../../util/CurrencyNames/currencyNames'
-import SelectCurrency from "../../components/SelectCurrency/SelectCurrency"
+import SelectCurrency from "../SelectCurrency/SelectCurrency"
 import currencySymbols from 
 '../../util/CurrencySymbols/currencySymbols'
 
@@ -89,7 +89,7 @@ fetchRates()
         <Nav />
         { /* React Charts JS Examples */}
         <div style={{display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", gap: "10px", minHeight: "100vh"}}>
-        <div style={{width: "45%", color: "#ffffff", textAlign: "center"}}>
+        <div style={{width: "40%", color: "#ffffff", textAlign: "center"}}>
         {values.from && values.to && <Pie data={data} />}
         <p style={{marginTop: "100px"}}>
         {values.from >= values.to ? <strong>{oldCurrency} is worth {values.from} in {newCurrency}</strong> : <strong>{newCurrency} is worth {values.to} in {oldCurrency}</strong>}
