@@ -1,6 +1,5 @@
 /* eslint-disable react/prop-types */
-/* eslint-disable no-unused-vars */
-import { useEffect, useState, useRef } from "react"
+import {useRef } from "react"
 
 import {
     FormElement,
@@ -8,12 +7,10 @@ import {
     FirstFieldSet,
     SecondFieldSet,
     ThirdFieldSet,
-    Select,
-    Option,
-    Span,
 } from '../../util/styles/BodyUtil'
 
-import { useSelector, useDispatch } from "react-redux"
+import { useSelector, useDispatch } from 
+'react-redux'
 
 import DefaultResetButton from 
 '../../util/FormElements/Buttons/DefaultResetButton'
@@ -36,7 +33,11 @@ import ConvertedCurrency from
 import currencySymbols from 
 '../../util/CurrencySymbols/currencySymbols'
 
-import currencyNames from '../../util/CurrencyNames/currencyNames'
+import currencyNames from 
+'../../util/CurrencyNames/currencyNames'
+
+import SelectCurrency from 
+'../SelectCurrency/SelectCurrency'
 
 function Body() {
 
@@ -59,10 +60,6 @@ function Body() {
     const loadingFromOld = useSelector((state) => state.oldCurrencyReducer.old_loading)
 
     const loadingFromNew = useSelector((state) => state.newCurrencyReducer.new_loading)
-
-    const newActive = useSelector((state) => state.newCurrencyPayload.new_active)
-    
-    const oldActive = useSelector((state) => state.oldCurrencyPayload.old_active)
     
     function selectOldCurrency(e) {
         const value = e.target.value
@@ -96,18 +93,14 @@ function Body() {
                 />
             </FirstFieldSet>
             <SecondFieldSet>
-                <Span>
-                <Select value={oldCurrency} onChange={selectOldCurrency} name="old_currency">
-                        {currencySymbols.map((symbol, idx) => (
-                            <Option key={symbol} title={currencyNames[idx]} value={symbol}>{symbol}</Option>
-                        ))}
-                </Select>
-                <Select value={newCurrency} onChange={selectNewCurrency} name="new_currency">
-                        {currencySymbols.map((symbol, idx) => (
-                            <Option key={symbol} title={currencyNames[idx]} value={symbol}>{symbol}</Option>
-                        ))}
-                </Select>
-                </Span>
+                <SelectCurrency 
+                oldCurrency={oldCurrency}
+                newCurrency={newCurrency}
+                currencyNames={currencyNames}
+                selectOldCurrency={selectOldCurrency}
+                selectNewCurrency={selectNewCurrency}
+                currencySymbols={currencySymbols}
+                />
                 <SwapButton
                 swapRef={swapRef} 
                 oldCurrency={oldCurrency}
@@ -116,6 +109,7 @@ function Body() {
                 loadingFromOld={loadingFromOld}
                 loadingFromNew={loadingFromNew}
                 newCurrency={newCurrency}
+                currencySymbols={currencySymbols}
                 />
                 <DefaultResetButton 
                 swapRef={swapRef}
