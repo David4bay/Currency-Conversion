@@ -89,7 +89,7 @@ fetchRates()
         <Nav />
         { /* React Charts JS Examples */}
         <div style={{display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", gap: "10px", minHeight: "100vh"}}>
-        <div style={{width: "40%", color: "#ffffff", textAlign: "center"}}>
+        <div style={{width: "3gi0%", color: "#ffffff", textAlign: "center"}}>
         {values.from && values.to && <Pie data={data} />}
         <p style={{marginTop: "100px"}}>
         {values.from >= values.to ? <strong>{oldCurrency} is worth {values.from} in {newCurrency}</strong> : <strong>{newCurrency} is worth {values.to} in {oldCurrency}</strong>}
