@@ -4,8 +4,6 @@ import { footerLinkStyle } from "../../util/styles/LinkStyle";
 
 function Footer() {
 
-    const footerRef = useRef(false)
-
     const textRef = useRef(null)
 
     const handleMouseOver = () => {
