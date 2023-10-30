@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
+import RateBody from './rateComponents/rateBody/RateBody.jsx'
 import ErrorBoundary from './ErrorBoundary.jsx'
 import './index.css'
 import {legacy_createStore, applyMiddleware, compose, combineReducers} from "redux"
@@ -11,7 +12,6 @@ import newCurrencyReducer from './util/ReduxReducers/currencyReducer/newCurrency
 import oldCurrencyPayload from './util/ReduxReducers/payloadReducer/oldCurrencyPayload.js'
 import newCurrencyPayload from './util/ReduxReducers/payloadReducer/newCurrencyPayload.js'
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
-import RateBody from './rateComponents/rateBody/RateBody.jsx'
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
