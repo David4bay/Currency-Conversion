@@ -6,7 +6,7 @@ try {
   const data = await axios.get(`https://api.api-ninjas.com/v1/convertcurrency?want=${newCurrency}&have=${oldCurrency}&amount=${value}`, {
       method: 'get',
       headers: {
-        'X-Api-Key': `${import.meta.env.VITE_API_KEY}`
+        'X-Api-Key': `${import.meta.env.VITE_API_KEY || process.env.API_KEY}`
     },
     })
     
