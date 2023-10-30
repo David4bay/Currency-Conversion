@@ -1,0 +1,10 @@
+.active {
+    text-decoration: none;
+    color: #4FBBBF;
+}
+
+.idle {
+    padding: 5px;
+    color: #ffffff;
+    text-decoration: none;
+}

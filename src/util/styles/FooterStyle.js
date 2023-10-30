@@ -1,6 +1,8 @@
 export const footerStyle = {
-    marginTop: "200px",
+    display: "flex",
+    justifyContent: "center",
     textAlign: "center",
     color: "#fff",
-    padding: "15px"
+    padding: "15px",
+    marginTop: "20px"
 }

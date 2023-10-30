@@ -15,6 +15,7 @@ margin-top: 15px;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    flex-grow: 1;
 }
 `
 
@@ -33,6 +34,10 @@ font-style: Verdana, Tahoma, sans-serif;
 font-weight: 600;
 font-size: clamp(1vw, 20px, 22px);
 padding: 50px;
+
+@media (max-width: 900px) {
+    padding: 22px;
+}
 `
 
 export const FirstFieldSet = styled.fieldset`
@@ -53,6 +58,12 @@ text-align: center;
 padding: 10px;
 overflow: visible;
 overflow-wrap: anywhere;
+
+@media (max-width: 900px) {
+    display: flex;
+    flex-direction: column;
+    order: 1;
+}
 `
 
 export const Label = styled.label`
@@ -60,6 +71,10 @@ max-width: 190px;
 `
 export const ConvertedLabel = styled.label`
 max-width: 190px;
+
+@media (max-width: 900px) {
+    margin-top: 5px;
+}
 `
 
 export const SecondFieldSet = styled.fieldset`
@@ -77,12 +92,25 @@ font-weight: 600;
 font-size: clamp(1vw, 20px, 22px);
 text-align: center;
 padding: 25px;
+
+@media (max-width: 900px) {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    order: 1;
+}
 `
 export const Span = styled.span`
 display: flex; 
 width: max-content; 
 margin: auto; 
 gap: 15px;
+
+@media (max-width: 900px) {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 40px;
+}
 `
 
 export const Select = styled.select`
@@ -123,6 +151,11 @@ text-align: center;
 padding: 10px;
 overflow: visible;
 overflow-wrap: anywhere;
+
+@media (max-width: 900px) {
+    display: flex;
+    flex-direction: column;
+}
 `
 
 export const ConvertTitle = styled.span`
@@ -139,7 +172,10 @@ letter-spacing: 2px;
 `
 
 export const SwapCurrencyText = styled.strong`
-
+&:hover {
+    background-color: hsla(0, 100%, 100%, 0.7);
+    color: #212A3E;
+}
 `
 
 export const SwapCurrencyButton = styled.button`
@@ -162,6 +198,10 @@ backdrop-filter: blur(5px);
 &:hover {
     cursor: pointer;
     transform: translateY(3px);
+}
+
+@media (max-width: 900px) {
+    margin-top: -45px;
 }
 `
 

@@ -10,6 +10,8 @@ import oldCurrencyReducer from './util/ReduxReducers/currencyReducer/oldCurrency
 import newCurrencyReducer from './util/ReduxReducers/currencyReducer/newCurrencyReducer.js'
 import oldCurrencyPayload from './util/ReduxReducers/payloadReducer/oldCurrencyPayload.js'
 import newCurrencyPayload from './util/ReduxReducers/payloadReducer/newCurrencyPayload.js'
+import {BrowserRouter, Routes, Route} from 'react-router-dom'
+import RateBody from './rateComponents/rateBody/RateBody.jsx'
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
@@ -28,9 +30,14 @@ const store = legacy_createStore(
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <Provider store={store}>
-    <ErrorBoundary>
-      <App />
-    </ErrorBoundary>
+      <ErrorBoundary>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<App />} />
+            <Route path="/rates" element={<RateBody />} />
+          </Routes>
+        </BrowserRouter>
+      </ErrorBoundary>
     </Provider>
   </React.StrictMode>,
 )

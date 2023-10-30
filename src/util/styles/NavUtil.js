@@ -16,11 +16,22 @@ export const NavContainer = styled.ul`
     padding-top: 1rem;
     list-style: none;
     transition: all 0.3s ease;
+
+    @media (max-width: 900px) {
+        display: flex;
+        flex-direction: row;
+        max-width: 400px;
+    }
     `
     
 export const IconText = styled.span`
     font-size: 20px;
     padding-right: 12px;
+
+    @media (max-width: 900px) {
+        font-size: 18px;
+        padding-right: 0px;
+    }
 `
 
 export const Icon = styled.li`
@@ -40,5 +51,11 @@ export const Icon = styled.li`
     &:active {
         color: #4FBBBF;
         transform: translateY(5px);
+    }
+
+    @media (max-width: 900px) {
+        display: flex;
+        padding: 0;
+        gap: 5px;
     }
 `
