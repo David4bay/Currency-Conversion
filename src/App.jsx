@@ -8,6 +8,7 @@ const Nav = React.lazy(() => import("./components/Navigation/Nav"))
 function App() {
  
   return (
+  <>
     <React.Suspense fallback={<LoadingState />}>
       <div>
       <Nav />
@@ -18,6 +19,7 @@ function App() {
       </main>
       </div>
     </React.Suspense>
+  </>
   )
 }
 

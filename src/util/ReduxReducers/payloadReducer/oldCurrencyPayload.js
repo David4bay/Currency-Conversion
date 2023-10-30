@@ -21,7 +21,7 @@ const oldCurrencyPayload = (state = initialState, action) => {
 
         case RESET:
         return {
-            ...state,currency_payload: 0
+            ...state, currency_payload: 0
         }
 
         case RESULT_OLD:

@@ -53,7 +53,7 @@ const newCurrencyReducer = (state = initialState, action) => {
 
         case CLEAR_NEW_AMOUNT:
         return {
-            ...state, new_amount: state.new_amount
+            ...state, new_amount: 0
         }
 
         default:

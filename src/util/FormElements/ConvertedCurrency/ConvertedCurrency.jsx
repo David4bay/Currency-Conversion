@@ -19,7 +19,7 @@ const ConvertedCurrency = ({newAmount, newCurrency, oldCurrency, swapRef, conver
         let newActive
         let oldActive
         dispatch(fetchCurrency(value, olderCurrency, newerCurrency, newActive = true, oldActive = false))
-    }, 1800, { leading: false, trailing: true, maxWait: 4000 })
+    }, 1000, { leading: false, trailing: true, maxWait: 1400 })
     
     const handleNewCurrencyInput = useCallback((e) => {
         dispatch({ type: "CLEAR_OLD_AMOUNT" })

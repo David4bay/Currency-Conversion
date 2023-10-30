@@ -17,7 +17,7 @@ const DefaultCurrency = ({oldAmount, oldCurrency, newCurrency, swapRef, defaultI
         let newActive
         let oldActive
         return dispatch(fetchCurrency(value, olderCurrency, newerCurrency, newActive = false, oldActive = true))
-    }, 1800, { leading: false, trailing: true, maxWait: 4000 })
+    }, 1000, { leading: false, trailing: true, maxWait: 1400 })
 
     const handleOldCurrencyInput = useCallback((e) => {
         dispatch({ type: "CLEAR_NEW_AMOUNT" })

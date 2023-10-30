@@ -9,10 +9,8 @@ try {
         'X-Api-Key': `${import.meta.env.VITE_API_KEY}`
     },
     })
-    console.log(data)
+    
     const response = await data.data
-    console.log(response)
-    console.log(response, newActive, oldActive)
 
     if (response && newActive) { 
        dispatch(
