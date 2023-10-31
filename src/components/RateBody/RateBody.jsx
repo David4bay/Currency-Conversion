@@ -42,7 +42,7 @@ const data = {
     datasets: [
       {
         label: 'Currency Rate(s)',
-        data: [oldCurrency, newCurrency],
+        data: [defaultRate, convertedRate],
         backgroundColor: [ 
           'rgba(255, 29, 132, 1)',
           'rgba(54, 122, 235, 2)',
@@ -81,7 +81,7 @@ useEffect(() => {
               <div style={{width: "35%", color: "#ffffff", textAlign: "center"}}>
               {defaultRate && convertedRate && <Pie data={data} />}
               <p style={{marginTop: "50px"}}>
-              {defaultRate >= convertedRate ? <strong>{oldCurrency}({defaultTitle}) is worth {defaultRate} in {convertedRate}({newCurrency})</strong> : <strong>{convertedTitle}({newCurrency}) is worth {convertedRate} in {defaultRate}({oldCurrency})</strong>}
+              {defaultRate >= convertedRate ? <strong>{oldCurrency} ({defaultTitle}) is worth {defaultRate} in {convertedTitle}({newCurrency})</strong> : <strong>{newCurrency} ({convertedTitle}) is worth {convertedRate} in {defaultTitle}({oldCurrency})</strong>}
               </p>
               </div>
               <div>
