@@ -20,7 +20,7 @@ textAlign: center;
 }
 `
 export const Paragraph = styled.p`
-margin-top: 50px;
+margin-top: 80px;
 `
 export const StrongText = styled.strong`
 line-height: 1.7;
@@ -28,5 +28,5 @@ line-height: 1.7;
 
 export const SelectCurrencyContainer = styled.div`
 display: block;
-margin: auto;
+margin: 100px auto 0px auto;
 `
