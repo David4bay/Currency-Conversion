@@ -1,3 +1,6 @@
+import { ChartContainer, ChartWrapper, Paragraph, SelectCurrencyContainer, StrongText
+} from "../../util/styles/chartStyles"
+
 import Footer from "../Footer/Footer"
 
 import Nav from "../Navigation/Nav"
@@ -42,10 +45,12 @@ function RateBody() {
   const data = chartDataHandler(oldCurrency, newCurrency, defaultRate, convertedRate)
 
 useEffect(() => {
+
  dispatch(fetchRates(oldCurrency, newCurrency))
+
 }, [dispatch, newCurrency, oldCurrency])
 
-    function selectOldCurrency(e) {
+  function selectOldCurrency(e) {
       const value = e.target.value
       const name = e.target.name
       dispatch({ type: "CHANGE_OLD", payload: { [name]: value } })
@@ -62,33 +67,39 @@ useEffect(() => {
           <div>
             <Nav />
               { /* React Charts JS Examples */}
-              <div style={{display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", gap: "10px", minHeight: "100vh"}}>
-              <div style={{width: "35%", color: "#ffffff", textAlign: "center"}}>
-              {defaultRate && convertedRate && <Pie data={data} />}
-              <p style={{marginTop: "50px"}}>
-              {defaultRate >= convertedRate ? <strong style={{lineHeight: 1.7}}>{defaultTitle} ({oldCurrency}) is worth {defaultRate.toLocaleString("en-US", {
-                style: "currency",
-                currency: newCurrency
-              })} in {convertedTitle}</strong> : <strong style={{lineHeight: 1.7}}>{convertedTitle} ({newCurrency}) is worth {convertedRate.toLocaleString("en-US", {
-                style: "currency",
-                currency: oldCurrency
-              })} in {defaultTitle}</strong>}
-              </p>
+              <ChartWrapper style={{display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", gap: "10px", minHeight: "100vh"}}>
+                <ChartContainer>
+                {defaultRate && convertedRate && <Pie data={data} />}
+                  <Paragraph>
+                    {defaultRate >= convertedRate ? 
+                    <StrongText>
+                      {defaultTitle} ({oldCurrency}) is worth {defaultRate?.toLocaleString("en-US", {
+                      style: "currency",
+                      currency: newCurrency
+                    })} in {convertedTitle}
+                    </StrongText> 
+                    : 
+                    <StrongText>
+                      {convertedTitle} ({newCurrency}) is worth {convertedRate?.toLocaleString("en-US", {
+                      style: "currency",
+                      currency: oldCurrency
+                    })} in {defaultTitle}
+                    </StrongText>
+                    }
+                  </Paragraph>
+                </ChartContainer>
+                <SelectCurrencyContainer>
+                  <SelectCurrency
+                  oldCurrency={oldCurrency}
+                  newCurrency={newCurrency}
+                  currencyNames={currencyNames}
+                  selectOldCurrency={selectOldCurrency}
+                  selectNewCurrency={selectNewCurrency}
+                  currencySymbols={currencySymbols}
+                  />
+                </SelectCurrencyContainer>
+              </ChartWrapper>
               </div>
-              <div>
-              <SelectCurrency
-              oldCurrency={oldCurrency}
-              newCurrency={newCurrency}
-              currencyNames={currencyNames}
-              selectOldCurrency={selectOldCurrency}
-              selectNewCurrency={selectNewCurrency}
-              currencySymbols={currencySymbols}
-              />
-              </div>
-              </div>
-              </div>
-              <div>
-            </div>
           <Footer />
         </div>
     )

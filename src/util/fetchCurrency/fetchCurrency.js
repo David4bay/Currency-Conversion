@@ -4,14 +4,22 @@ import axios from 'axios'
 export const fetchCurrency = (value, oldCurrency, newCurrency, newActive, oldActive) => async dispatch => {
 
 try {
-  const data = await axios.get(`https://api.api-ninjas.com/v1/convertcurrency?want=${newCurrency}&have=${oldCurrency}&amount=${value}`, {
+  const data = await axios.get(`https://currency-converter-by-api-ninjas.p.rapidapi.com/v1/convertcurrency`, {
       method: 'get',
+      params: {
+        have: oldCurrency,
+        want: newCurrency,
+        amount: value
+      },
       headers: {
-        'X-Api-Key': `${import.meta.env.VITE_API_KEY}`
+        'X-RapidAPI-Key': `${import.meta.env.VITE_API_KEY}`,
+        'X-RapidAPI-Host': `${import.meta.env.VITE_API_KEY2}`
     },
     })
-    
+
     const response = await data.data
+
+    console.log(await response)
 
     if (response && newActive) { 
        dispatch(
@@ -41,3 +49,23 @@ try {
   console.error(err)
 }
 }
+
+/* 
+// will be used when api rate limit is dropped
+const options = {
+    method: 'GET',
+    url: 'https://currency-converter-by-api-ninjas.p.rapidapi.com/v1/convertcurrency',
+    params: {
+      have: oldCurrency,
+      want: newCurrency,
+      amount: value
+    },
+    headers: {
+      'X-RapidAPI-Key': '2fbd437326mshe1b848dbb10ad9cp1036a8jsndd2700e4a42d',
+      'X-RapidAPI-Host': 'currency-converter-by-api-ninjas.p.rapidapi.com'
+    }
+  }
+    
+  let response = await axios.request(options)
+
+*/

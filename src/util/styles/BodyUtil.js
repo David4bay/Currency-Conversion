@@ -15,7 +15,6 @@ margin-top: 15px;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    flex-grow: 1;
 }
 `
 
@@ -37,6 +36,7 @@ padding: 50px;
 
 @media (max-width: 900px) {
     padding: 22px;
+    order: -1;
 }
 `
 
@@ -62,7 +62,7 @@ overflow-wrap: anywhere;
 @media (max-width: 900px) {
     display: flex;
     flex-direction: column;
-    order: 1;
+    order: -1;
 }
 `
 
