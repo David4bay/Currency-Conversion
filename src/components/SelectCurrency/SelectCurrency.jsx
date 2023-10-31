@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import React, { useRef, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import {
     Select,
     Option,
@@ -11,10 +11,6 @@ import { useDispatch } from 'react-redux'
 function SelectCurrency({oldCurrency, newCurrency, currencyNames, selectOldCurrency, selectNewCurrency, currencySymbols}) {
     
     const dispatch = useDispatch()
-
-    const defaultCurrencyTitleRef = useRef(null)
-
-    const convertedCurrencyTitleRef = useRef(null)
 
     useEffect(() => {
 
@@ -43,10 +39,6 @@ function SelectCurrency({oldCurrency, newCurrency, currencyNames, selectOldCurre
 
         dispatch({type: "NEW_TITLE_LOADED", payload: convertedCurrencyName[0]})
 
-        console.log(defaultCurrencyName[0])
-        
-        console.log(convertedCurrencyName[0])
-
     }, [currencyNames, currencySymbols, dispatch, newCurrency, oldCurrency])
 
     return (
@@ -54,14 +46,14 @@ function SelectCurrency({oldCurrency, newCurrency, currencyNames, selectOldCurre
                 <Select value={oldCurrency} onChange={selectOldCurrency} name="old_currency">
                         {currencySymbols.map((symbol, idx) => (
                             <React.Fragment key={symbol}>
-                            <Option ref={defaultCurrencyTitleRef} title={currencyNames[idx]} value={symbol}>{symbol}</Option>
+                            <Option title={currencyNames[idx]} value={symbol}>{symbol}</Option>
                             </React.Fragment>
                         ))}
                 </Select>
                 <Select value={newCurrency} onChange={selectNewCurrency} name="new_currency">
                         {currencySymbols.map((symbol, idx) => (
                             <React.Fragment key={symbol}>
-                            <Option ref={convertedCurrencyTitleRef} title={currencyNames[idx]} value={symbol}>{symbol}</Option>
+                            <Option title={currencyNames[idx]} value={symbol}>{symbol}</Option>
                             </React.Fragment>
                         ))}
                 </Select>

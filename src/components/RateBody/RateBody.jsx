@@ -19,6 +19,8 @@ import currencySymbols from
 
 import { fetchRates } from '../../util/fetchRates/fetchRates'
 
+import chartDataHandler from '../../util/chartDataHander/chartDataHandler'
+
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 function RateBody() {
@@ -37,24 +39,7 @@ function RateBody() {
 
   const convertedRate = useSelector((state) => state.ratesReducer.convertedRate)
 
-const data = {
-    labels: [`${oldCurrency}(valued in ${newCurrency})`, `${newCurrency}(valued in ${oldCurrency})`],
-    datasets: [
-      {
-        label: 'Currency Rate(s)',
-        data: [defaultRate, convertedRate],
-        backgroundColor: [ 
-          'rgba(255, 29, 132, 1)',
-          'rgba(54, 122, 235, 2)',
-        ],
-        borderColor: [
-          'rgba(255, 29, 132, 1)',
-          'rgba(54, 122, 235, 1)',
-        ],
-        borderWidth: 1,
-      },
-    ],
-  };
+  const data = chartDataHandler(oldCurrency, newCurrency, defaultRate, convertedRate)
 
 useEffect(() => {
  dispatch(fetchRates(oldCurrency, newCurrency))
@@ -81,7 +66,13 @@ useEffect(() => {
               <div style={{width: "35%", color: "#ffffff", textAlign: "center"}}>
               {defaultRate && convertedRate && <Pie data={data} />}
               <p style={{marginTop: "50px"}}>
-              {defaultRate >= convertedRate ? <strong>{oldCurrency} ({defaultTitle}) is worth {defaultRate} in {convertedTitle}({newCurrency})</strong> : <strong>{newCurrency} ({convertedTitle}) is worth {convertedRate} in {defaultTitle}({oldCurrency})</strong>}
+              {defaultRate >= convertedRate ? <strong style={{lineHeight: 1.7}}>{defaultTitle} ({oldCurrency}) is worth {defaultRate.toLocaleString("en-US", {
+                style: "currency",
+                currency: newCurrency
+              })} in {convertedTitle}</strong> : <strong style={{lineHeight: 1.7}}>{convertedTitle} ({newCurrency}) is worth {convertedRate.toLocaleString("en-US", {
+                style: "currency",
+                currency: oldCurrency
+              })} in {defaultTitle}</strong>}
               </p>
               </div>
               <div>
