@@ -28,5 +28,8 @@ line-height: 1.7;
 
 export const SelectCurrencyContainer = styled.div`
 display: block;
-margin: 100px auto 0px auto;
+
+@media (min-width: 900px) {
+    margin: 100px auto 0px auto;
+}
 `
