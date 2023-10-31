@@ -11,6 +11,7 @@ import oldCurrencyReducer from './util/ReduxReducers/currencyReducer/oldCurrency
 import newCurrencyReducer from './util/ReduxReducers/currencyReducer/newCurrencyReducer.js'
 import oldCurrencyPayload from './util/ReduxReducers/payloadReducer/oldCurrencyPayload.js'
 import newCurrencyPayload from './util/ReduxReducers/payloadReducer/newCurrencyPayload.js'
+import ratesReducer from './util/ReduxReducers/ratesReducer/ratesReducer.js'
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
@@ -19,7 +20,8 @@ let allReducers = combineReducers({
   oldCurrencyReducer,
   newCurrencyReducer,
   oldCurrencyPayload,
-  newCurrencyPayload
+  newCurrencyPayload,
+  ratesReducer
 })
 
 const store = legacy_createStore(
