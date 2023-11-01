@@ -7,12 +7,17 @@ import {useSelector} from "react-redux"
 const ConvertedAmountLabel = ({newAmount, newCurrency}) => {
 
     const payloadCurrencySymbol = useSelector((state) => state.oldCurrencyPayload.old_currencySymbol_payload)
+
     const payloadAmount = useSelector((state) => state.oldCurrencyPayload.currency_payload)
+
     const oldPayloadActive = useSelector((state) => state.oldCurrencyPayload.old_active)
+
     const newPayloadActive = useSelector((state) => state.newCurrencyPayload.new_active)
 
+    const convertedTitle = useSelector((state) => state.ratesReducer.convertedTitle)
+
     return (
-        <ConvertedLabel htmlFor="convertedTypeAmount">
+        <ConvertedLabel htmlFor="convertedTypeAmount" title={convertedTitle}>
                     <ConvertTitle>Converted <br/>{!oldPayloadActive && newPayloadActive ? "from" : "to"}</ConvertTitle>
                     {                        
                         !oldPayloadActive && newPayloadActive ? 

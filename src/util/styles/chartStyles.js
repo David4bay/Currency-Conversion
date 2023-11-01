@@ -22,6 +22,7 @@ textAlign: center;
 export const Paragraph = styled.p`
 margin-top: 80px;
 `
+
 export const StrongText = styled.strong`
 line-height: 1.7;
 `

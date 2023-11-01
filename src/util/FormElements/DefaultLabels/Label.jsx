@@ -7,16 +7,21 @@ import {useSelector} from "react-redux"
 const DefaultLabel = ({oldAmount = 0, oldCurrency}) => {
 
     const payloadCurrencySymbol = useSelector((state) => state.newCurrencyPayload.new_currencySymbol_payload)
+
     const payloadAmount = useSelector((state) => state.newCurrencyPayload.currency_payload)
+
     const newPayloadActive = useSelector((state) => state.newCurrencyPayload.new_active)
+
     const oldPayloadActive = useSelector((state) => state.oldCurrencyPayload.old_active)
 
+    const defaultTitle = useSelector((state) => state.ratesReducer.defaultTitle)
+
     return (
-        <Label htmlFor="defaultTypeAmount">
+        <Label htmlFor="defaultTypeAmount" title={defaultTitle}>
                     <ConvertTitle>Converted <br/>{!newPayloadActive ? "from" : "to"}</ConvertTitle>
                     {
                         oldPayloadActive && !newPayloadActive ? 
-                        (   
+                        ( 
                                 oldAmount.toLocaleString("en-US", {
                                 style: "currency",
                                 currency: `${oldCurrency}`,

@@ -37,6 +37,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           <Routes>
             <Route path="/" element={<App />} />
             <Route path="/rates" element={<RateBody />} />
+            <Route path="*" element={<App />} />
           </Routes>
         </BrowserRouter>
       </ErrorBoundary>
