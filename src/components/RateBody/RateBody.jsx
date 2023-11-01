@@ -42,7 +42,7 @@ function RateBody() {
 
   const convertedRate = useSelector((state) => state.ratesReducer.convertedRate)
 
-  const data = chartDataHandler(oldCurrency, newCurrency, defaultRate, convertedRate)
+  const data = chartDataHandler(defaultTitle, convertedTitle, defaultRate, convertedRate)
 
 useEffect(() => {
 

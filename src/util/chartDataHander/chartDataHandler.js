@@ -2,7 +2,7 @@
 
  const chartDataHandler = (oldCurrency, newCurrency, defaultRate, convertedRate) => {
     return {
-        labels: [`${oldCurrency}(valued in ${newCurrency})`, `${newCurrency}(valued in ${oldCurrency})`],
+        labels: [`${oldCurrency} valued in ${newCurrency}`, `${newCurrency} valued in ${oldCurrency}`],
         datasets: [
           {
             label: 'Currency Rate(s)',
