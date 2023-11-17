@@ -15,7 +15,7 @@ export const fetchRates = (oldCurrency, newCurrency) => async dispatch => {
   try {
 
     const defaultAmount = await axios.request(options1)
-
+    console.log("defaultAmount", defaultAmount)
     await dispatch({type: "OLD_RATES_LOADED", payload: defaultAmount.data.exchange_rate})
 
   } catch(err) {
@@ -35,7 +35,7 @@ export const fetchRates = (oldCurrency, newCurrency) => async dispatch => {
   try {
 
     const convertedAmount = await axios.request(options2)
-  
+    console.log("convertedAmount", convertedAmount)
     await dispatch({type: "NEW_RATES_LOADED", payload: convertedAmount.data.exchange_rate})
 
   } catch(err) {

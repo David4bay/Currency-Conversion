@@ -18,7 +18,7 @@ try {
     })
 
     const response = await data.data
-
+  console.log("response", response)
     if (response && newActive) { 
        dispatch(
         {
