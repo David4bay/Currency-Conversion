@@ -125,6 +125,7 @@ function Body() {
                 defaultInputRef={defaultInputRef}
                 convertedInputRef={convertedInputRef}
                 newCurrency={newCurrency}
+                oldAmount={oldAmount}
                 newAmount={newAmount}
                 oldCurrency={oldCurrency}
                 />

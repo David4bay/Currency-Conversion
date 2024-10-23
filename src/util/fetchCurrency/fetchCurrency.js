@@ -2,21 +2,28 @@
 import axios from 'axios'
 
 export const fetchCurrency = (value, oldCurrency, newCurrency, newActive, oldActive) => async dispatch => {
-// throw Error('Could not fetch currency.')
+const CancelToken = axios.CancelToken
+let source = CancelToken.source()
 try {
-  const currencyInfo = await axios.get(`https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_currency=${oldCurrency}&to_currency=${newCurrency}&apikey=${import.meta.env.VITE_CURRENCY_KEY}`, {
-      method: 'get'
-    })
+  const currencyInfo = await axios.get(`https://hexarate.paikama.co/api/rates/latest/${oldCurrency}?target=${newCurrency}`, {
+    cancelToken: source.token
+  }).catch((e) => {
+    if (axios.isCancel(e)) {
+      console.error('Request canceled', e.message)
+      return
+    }
+    console.error(e)
+  })
 
-    const response = await currencyInfo.data
+    const response = await currencyInfo.data.data
   console.log("response from currency call", response)
     if (response && newActive) { 
        dispatch(
         {
           type: "RESULT_NEW",
           payload: {
-          currency_payload: response.new_amount,
-          new_currencySymbol_payload: response.new_currency
+          currency_payload: parseInt(response.mid * value, 10),
+          new_currencySymbol_payload: response.target
         }
       })
        dispatch({type: "DONE_NEW"})
@@ -27,8 +34,8 @@ try {
           {
             type: "RESULT_OLD",
             payload: {
-            currency_payload: response.new_amount, 
-            old_currencySymbol_payload: response.new_currency
+            currency_payload: parseInt(response.mid * value, 10),
+            old_currencySymbol_payload: response.target
           }
         })
          dispatch({type: "DONE_OLD"})
@@ -38,23 +45,3 @@ try {
   console.error(err)
 }
 }
-
-/* 
-// will be used when api rate limit is dropped
-const options = {
-    method: 'GET',
-    url: 'https://currency-converter-by-api-ninjas.p.rapidapi.com/v1/convertcurrency',
-    params: {
-      have: oldCurrency,
-      want: newCurrency,
-      amount: value
-    },
-    headers: {
-      'X-RapidAPI-Key': '2fbd437326mshe1b848dbb10ad9cp1036a8jsndd2700e4a42d',
-      'X-RapidAPI-Host': 'currency-converter-by-api-ninjas.p.rapidapi.com'
-    }
-  }
-    
-  let response = await axios.request(options)
-
-*/

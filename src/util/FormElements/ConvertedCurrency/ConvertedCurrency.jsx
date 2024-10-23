@@ -8,7 +8,7 @@ import { useDispatch } from "react-redux"
 import { useCallback, useRef } from 'react'
 import debounce from 'lodash.debounce'
 
-const ConvertedCurrency = ({newAmount, newCurrency, oldCurrency, swapRef, convertedInputRef}) => {
+const ConvertedCurrency = ({oldAmount, newAmount, newCurrency, oldCurrency, swapRef, convertedInputRef}) => {
     
     const dispatch = useDispatch()
 
@@ -19,7 +19,7 @@ const ConvertedCurrency = ({newAmount, newCurrency, oldCurrency, swapRef, conver
         let newActive
         let oldActive
         dispatch(fetchCurrency(value, olderCurrency, newerCurrency, newActive = true, oldActive = false))
-    }, 1000, { leading: false, trailing: true, maxWait: 1400 })
+    }, 1000, { leading: true, trailing: false, maxWait: 400 })
     
     const handleNewCurrencyInput = useCallback((e) => {
         dispatch({ type: "CLEAR_OLD_AMOUNT" })
