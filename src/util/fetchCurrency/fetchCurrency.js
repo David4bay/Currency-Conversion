@@ -2,17 +2,12 @@
 import axios from 'axios'
 
 export const fetchCurrency = (value, oldCurrency, newCurrency, newActive, oldActive) => async dispatch => {
-const CancelToken = axios.CancelToken
-let source = CancelToken.source()
+console.log("value", value, "oldCurrency", oldCurrency, "newCurrency", newCurrency, "newActive", newActive, "oldActive", oldActive)
 try {
-  const currencyInfo = await axios.get(`https://hexarate.paikama.co/api/rates/latest/${oldCurrency}?target=${newCurrency}`, {
-    cancelToken: source.token
-  }).catch((e) => {
-    if (axios.isCancel(e)) {
-      console.error('Request canceled', e.message)
-      return
-    }
+  const currencyInfo = await axios.get(`https://hexarate.paikama.co/api/rates/latest/${oldCurrency}?target=${newCurrency}`,
+).catch((e) => {
     console.error(e)
+    return
   })
 
     const response = await currencyInfo.data.data

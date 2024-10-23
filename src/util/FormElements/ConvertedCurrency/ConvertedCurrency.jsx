@@ -6,21 +6,21 @@ import {
 import { fetchCurrency } from '../../fetchCurrency/fetchCurrency'
 import { useDispatch } from "react-redux"
 import { useCallback, useRef } from 'react'
-import debounce from 'lodash.debounce'
+import throttle from 'lodash.throttle'
 
 const ConvertedCurrency = ({oldAmount, newAmount, newCurrency, oldCurrency, swapRef, convertedInputRef}) => {
     
     const dispatch = useDispatch()
 
-    const debouncedCall = debounce(() => {
+    const debouncedCall = () => {
         let olderCurrency = newCurrency
         let newerCurrency = oldCurrency
         let value = convertedInputRef.current.value || 0
         let newActive
         let oldActive
         dispatch(fetchCurrency(value, olderCurrency, newerCurrency, newActive = true, oldActive = false))
-    }, 1000, { leading: true, trailing: false, maxWait: 400 })
-    
+    }
+    let delayCall 
     const handleNewCurrencyInput = useCallback((e) => {
         dispatch({ type: "CLEAR_OLD_AMOUNT" })
         swapRef.current = true
@@ -29,7 +29,8 @@ const ConvertedCurrency = ({oldAmount, newAmount, newCurrency, oldCurrency, swap
         dispatch({type: "CHANGE_NEW", payload:{[name]: value}})
         dispatch({ type: "LOADING_FROM_NEW" })
         dispatch({ type: "OLD_INACTIVE" })
-        debouncedCall()
+        delayCall = throttle(debouncedCall, 100)
+        delayCall()
     }, [debouncedCall, dispatch, swapRef])
 
     return (

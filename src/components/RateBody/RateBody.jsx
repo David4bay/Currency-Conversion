@@ -67,7 +67,7 @@ useEffect(() => {
           <div>
             <Nav />
               { /* React Charts JS Examples */}
-              <ChartWrapper style={{display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", gap: "10px", minHeight: "100vh"}}>
+              <ChartWrapper style={{display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", gap: "10px", minHeight: "30vh"}}>
                 <ChartContainer>
                 {defaultRate && convertedRate && <Pie data={data} />}
                   <Paragraph>

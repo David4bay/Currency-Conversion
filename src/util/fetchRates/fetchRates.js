@@ -4,19 +4,15 @@ export const fetchRates = (oldCurrency, newCurrency) => async dispatch => {
 
   const options1 = {
     method: 'GET',
-    url: 'https://exchange-rate-by-api-ninjas.p.rapidapi.com/v1/exchangerate',
-    params: {pair: `${oldCurrency}_${newCurrency}`},
-    headers: {
-      'X-RapidAPI-Key': `${import.meta.env.VITE_API_KEY}`,
-      'X-RapidAPI-Host': `${import.meta.env.VITE_API_KEY3}`
-    }
+    url: `https://hexarate.paikama.co/api/rates/latest/${oldCurrency}?target=${newCurrency}`
   };
 
   try {
 
-    const defaultAmount = await axios.request(options1)
-    console.log("defaultAmount", defaultAmount)
-    await dispatch({type: "OLD_RATES_LOADED", payload: defaultAmount.data.exchange_rate})
+    let defaultAmount = await axios.request(options1)
+    console.log("defaultAmount", defaultAmount.data.data)
+    defaultAmount = defaultAmount.data.data
+    await dispatch({type: "OLD_RATES_LOADED", payload: { defaultRate: defaultAmount.mid, defaultTitle: defaultAmount.base, convertedTitle: defaultAmount.target }})
 
   } catch(err) {
     console.log(err)
@@ -24,19 +20,15 @@ export const fetchRates = (oldCurrency, newCurrency) => async dispatch => {
 
   const options2 = {
     method: 'GET',
-    url: 'https://exchange-rate-by-api-ninjas.p.rapidapi.com/v1/exchangerate',
-    params: {pair: `${newCurrency}_${oldCurrency}`},
-    headers: {
-      'X-RapidAPI-Key': `${import.meta.env.VITE_API_KEY}`,
-      'X-RapidAPI-Host': `${import.meta.env.VITE_API_KEY3}`
-    }
+    url: `https://hexarate.paikama.co/api/rates/latest/${newCurrency}?target=${oldCurrency}`
   };
 
   try {
 
-    const convertedAmount = await axios.request(options2)
-    console.log("convertedAmount", convertedAmount)
-    await dispatch({type: "NEW_RATES_LOADED", payload: convertedAmount.data.exchange_rate})
+    let convertedAmount = await axios.request(options2)
+    console.log("convertedAmount", convertedAmount.data.data)
+    convertedAmount = convertedAmount.data.data
+    await dispatch({type: "NEW_RATES_LOADED", payload: { convertedRate: convertedAmount.mid}})
 
   } catch(err) {
     console.log(err)

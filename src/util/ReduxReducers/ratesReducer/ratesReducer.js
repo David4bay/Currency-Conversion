@@ -16,22 +16,22 @@ const ratesReducer = (state = initialState, action) => {
 
         case OLD_RATES_LOADED:
             return {
-                ...state, defaultRate: action.payload
+                ...state, ...action.payload
             }
 
         case NEW_RATES_LOADED:
             return {
-                ...state, convertedRate: action.payload
+                ...state, ...action.payload
             }
 
         case OLD_TITLE_LOADED:
             return {
-                ...state, defaultTitle: action.payload
+                ...state, ...action.payload
             }
 
         case NEW_TITLE_LOADED:
             return {
-                ...state, convertedTitle: action.payload
+                ...state, ...action.payload
             }
 
         default:
